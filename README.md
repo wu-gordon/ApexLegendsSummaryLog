@@ -91,7 +91,7 @@ rank up during their session.
 
 **Who will use it?**
 
-This application was designed to break down the competitive ranked points (RP) system in the game for players 
+This application was designed to break down the competitive ranked points (RP) system in the game, for players 
 who grind out long sessions with friends and want to track an organized log of their RP gain/loss for 
 their ranked session(s).
  
@@ -99,7 +99,9 @@ their ranked session(s).
 
 This project interests me because Apex Legends is currently my favourite video game. I have been playing 
 this game for the past 8 months and I am still in love with it. For this reason, I knew I had to create 
-an application that I can benefit from and players who share a similar competitive mindset.
+an application that I can benefit from and players who share a similar competitive mindset. </P>
+***Interesting fact**: The highest rank I've reached is Diamond IV 7524 RP. I also stream Apex Legends at Twitch.tv/
+maangchiii*
 
 # User Stories
 
