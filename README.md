@@ -1,4 +1,4 @@
-# Apex Legends Ranked Points (RP) Summary Log Calculator
+# Apex Legends Ranked Points (RP) Match History Log 
 
 ## *Evaluate your ranked session progress in an organized fashion*
 
@@ -6,24 +6,23 @@
 
 **What will the application do?**
 
-Inspired by the free-to-play battle royale-hero shooter game Apex Legends developed by Respawn
-Entertainment, this application allows players to visualize a game by game point breakdown of their
+Inspired by the free-to-play battle royale-hero shooter game Apex Legends, developed by Respawn
+Entertainment, this application allows players to visualize a game by game breakdown of their
 ranked sessions. 
 
 At the beginning of each session, players will be asked to select their appropriate ranked division (Bronze, 
-Silver, Gold, Platinum, Diamond, Masters/Predator). This will introduce a new window with a text line
-requesting for an RP value which will be provided to the player at the end of each game. Once the RP value
-has been inserted, a built-in RP calculator will then determine the player's placement among 60 teams of 3,
-and a combined total of Kills/Assists or kill participation (KP) for that game.
+Silver, Gold, Platinum, Diamond, Masters/Predator). At the end of each game, players will be able to record three
+unique values: the overall placement among sixty teams of three, a kill participation (KP) value which consists a 
+combined total of kills and assists, and a positive/negative RP value based on the quality of their game.
  
-Next, there will be an option to "Submit" which will complete the session and print out a total RP
-gained/lost summary with an ordered breakdown of placement and KP alongside the selected division it was in.
-Players also have the option to "Re-enter" to continue entering RP entries after each game until their
-session is over.
+After entering these values, players will be prompted to add data for a new match. If selected "yes", the same values
+will be requested from the player again, until "no" is selected to indicate completion of their ranked session. In the 
+event that a player promotes from their current division, they may select the next appropriate rank division when 
+re-entering their data for the following game(s).
 
-Additionally, there will be a "Menu" option at the bottom after receiving the details per RP entry, allowing
-players to head back to the main menu and select a different ranked division, in the case where players 
-rank up during their session.
+Next, a match history log of all the games that have been recorded will be printed out in chronological order. Players
+will be able to visualize their progress from all the matches that were played, in addition to which divisions they were
+played in.
 
 **Kills/Assists (KP) Multiplier (Max KP = 6)** </P>
 *1 KP = 1 Kill or Assist(s)*
@@ -91,38 +90,26 @@ rank up during their session.
 
 **Who will use it?**
 
-This application was designed to break down the competitive ranked points (RP) system in the game, for players 
-who grind out long sessions with friends and want to track an organized log of their RP gain/loss for 
-their ranked session(s).
+Since the game only allows players to view the data from their most recently played game, the functionality of this
+application is designed for competitive Apex Legends players who enjoy grinding out long sessions with 
+friends and want to have a record of their ranked progression.
  
 **Why is this project of interest to you?**
 
 This project interests me because Apex Legends is currently my favourite video game. I have been playing 
 this game for the past 8 months and I am still in love with it. For this reason, I knew I had to create 
-an application that I can benefit from and players who share a similar competitive mindset. </P>
+an application that I can benefit from as well as players who share a similar competitive mindset. </P>
 ***Interesting fact**: The highest rank I've reached is Diamond IV 7524 RP. I also stream Apex Legends at Twitch.tv/
 maangchiii*
 
 # User Stories
 
-**Summary Log**
+**Match History Log**
 - As a user, I want to be able to select a ranked division
-- As a user, I want to be able to insert an RP value
-- As a user, I want to be able to go back to the main menu if selected incorrect ranked division
-- As a user, I want to be able to view the KP and placement breakdown after inserting an RP value
-- As a user, I want to be able to re-enter RP values to visualize the gain/loss from each game played
-- As a user, I want to be able to go back to the main menu if there is a rank up during the session
-- As a user, I want to be able to submit the stored RP statistics to a summary log that will display all gains
-  and losses in each division within the ranked session
-  
-**RP Calculator**
-- As a user, I want to be able to receive a total KP value based on the RP value in conjunction with the 
-  KP multiplier (Max KP = 6) at each placement in the game
-- As a user, I want to be able to receive a placement value based on the RP value which will determine the 
-  weight of the KP multiplier
-- As a user, I want to be able to have entry cost deducted corresponding to the selected ranked division
-  before producing the KP and placement results for that game
-- As a user, I want to be able to have results based on RP gain and RP loss
-- As a user, I want to be able to not demote out of the current division due to the demotion rules where 
-  players can only demote within tiers of the same division and not divisions themselves
-
+- As a user, I want to be able to insert a placement value after each game
+- As a user, I want to be able to insert a kill participation (KP) value after each game
+- As a user, I want to be able to insert a ranked points (RP) value after each game
+- As a user, I want to be able to re-enter game data for different games
+- As a user, I want to be able to input game data for a different ranked division in the event of a division promotion
+- As a user, I want to be able to have a match history log that will display the list of recorded games played in 
+chronological order including the stored game data
