@@ -7,7 +7,11 @@ public class ApexMatch {
     private int kp;
     private int placement;
 
-    public ApexMatch() {
+    public ApexMatch(String rankDiv, int place, int killPart, int rankPoints) {
+        rank = rankDiv;
+        placement = place;
+        kp = killPart;
+        rp = rankPoints;
     }
 
     // EFFECTS: sets division to rank

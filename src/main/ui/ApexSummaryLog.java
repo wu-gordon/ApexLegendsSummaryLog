@@ -23,7 +23,7 @@ public class ApexSummaryLog {
         MatchLog matches = new MatchLog();
 
         do {
-            ApexMatch apexMatch = new ApexMatch();
+            ApexMatch apexMatch = new ApexMatch("", 0,0, 0);
 
             selectRankDivision(apexMatch);
             insertPlacement(apexMatch);
@@ -83,7 +83,7 @@ public class ApexSummaryLog {
             int placement = in.nextInt();
             System.out.println("You entered " + placement);
 
-            if (placement <= 20) {
+            if (placement >= 0 && placement <= 20) {
                 apexMatch.storePlacement(placement);
                 break;
             }
@@ -104,7 +104,7 @@ public class ApexSummaryLog {
             int killParticipation = in.nextInt();
             System.out.println("You entered " + killParticipation);
 
-            if (killParticipation <= 6) {
+            if (killParticipation >= 0 && killParticipation <= 6) {
                 apexMatch.storeKillParticipation(killParticipation);
                 break;
             }
@@ -125,7 +125,7 @@ public class ApexSummaryLog {
             int rankedPoints = in.nextInt();
             System.out.println("You entered " + rankedPoints);
 
-            if (rankedPoints <= 250) {
+            if (rankedPoints >= 0 && rankedPoints <= 250) {
                 apexMatch.storeRankedPoints(rankedPoints);
                 break;
             }
