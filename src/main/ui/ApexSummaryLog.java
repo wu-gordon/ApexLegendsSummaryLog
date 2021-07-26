@@ -16,9 +16,9 @@ public class ApexSummaryLog {
     }
 
     // EFFECTS: a new match log is created per session where all apex match data will be stored
-    //          while true in the do-while loop, a new match entry will be created every time "yes" is selected
-    //          by the player, until "no" is selected which will break the loop and a summary log gets printed to
-    //          complete the session
+    //
+    //          while true, a new match entry will be created every time "yes" is selected by the player, until
+    //          "no" is selected which will break the loop and a summary log gets printed to complete the session
     public void consoleStart() {
         MatchLog matches = new MatchLog();
 
@@ -46,12 +46,13 @@ public class ApexSummaryLog {
         matches.printSummaryLog();
     }
 
-    // REQUIRES: the apex match that was instantiated in consoleStart()
-    // MODIFIES: this
+    // REQUIRES: a ranked division
+    // MODIFIES: this, apexMatch
     // EFFECTS: stores ranked division data for the apex match
-    //          while true in the do-while loop, if any of the answers submitted match the appropriate ranks
-    //          (non-case sensitive), the data will be stored, otherwise a typo will break the loop and
-    //          prompt an invalid response message
+    //
+    //          while true, the submitted rank division will call upon its respective method in ApexMatch
+    //          (storeRankedDivision) where it will confirm the selection and spelling. If the result is true,
+    //          the loop will break and prompt the next message, otherwise it will prompt an invalid response
     public void selectRankDivision(ApexMatch apexMatch) {
         do {
             System.out.println("Please select your appropriate ranked division:");
@@ -61,21 +62,21 @@ public class ApexSummaryLog {
             rank = rank.toLowerCase();
             System.out.println("You entered " + rank);
 
-            if (rank.equals("bronze") || rank.equals("silver") || rank.equals("gold") || rank.equals("platinum")
-                    || rank.equals("diamond") || rank.equals("masters/predator")) {
-                apexMatch.storeRankedDivision(rank);
+            boolean result = apexMatch.storeRankedDivision(rank);
+            if (result) {
                 break;
             }
             System.out.println("Invalid response");
         } while (true);
     }
 
-    // REQUIRES: the apex match that was instantiated in consoleStart()
-    // MODIFIES: this
+    // REQUIRES: a placement value
+    // MODIFIES: this, apexMatch
     // EFFECTS: stores placement data for the apex match
-    //          while true in the do-while loop, if any of the answers submitted match the appropriate placement
-    //          range (symbolizing 20 teams of 3), the data will be stored, otherwise a value outside of the range
-    //          will break the loop and prompt an invalid response message
+    //
+    //          while true, the submitted placement value will call upon its respective method in ApexMatch
+    //          (storePlacement) where it will confirm the the appropriate placement range. If the result is true,
+    //          the loop will break and prompt the next message, otherwise it will prompt an invalid response
     public void insertPlacement(ApexMatch apexMatch) {
         do {
             System.out.println("Please enter your placement:\n");
@@ -83,20 +84,21 @@ public class ApexSummaryLog {
             int placement = in.nextInt();
             System.out.println("You entered " + placement);
 
-            if (placement >= 0 && placement <= 20) {
-                apexMatch.storePlacement(placement);
+            boolean result = apexMatch.storePlacement(placement);
+            if (result) {
                 break;
             }
             System.out.println("Invalid response");
         } while (true);
     }
 
-    // REQUIRES: the apex match that was instantiated in consoleStart()
-    // MODIFIES: this
+    // REQUIRES: a kill participation (KP) value
+    // MODIFIES: this, apexMatch
     // EFFECTS: stores kill participation data for the apex match
-    //          while true in the do-while loop, if any of the answers submitted match the appropriate kp
-    //          range (symbolizing max kp = 6), the data will be stored, otherwise a value outside of the range
-    //          will break the loop and prompt an invalid response message
+    //
+    //          while true, the inserted KP value will call upon its respective method in ApexMatch
+    //          (storeKillParticipation) where it will confirm the appropriate KP range. If the result is true,
+    //          the loop will break and prompt the next message, otherwise it will prompt an invalid response
     public void insertKillParticipation(ApexMatch apexMatch) {
         do {
             System.out.println("Please enter your kill participation (KP):\n");
@@ -104,20 +106,21 @@ public class ApexSummaryLog {
             int killParticipation = in.nextInt();
             System.out.println("You entered " + killParticipation);
 
-            if (killParticipation >= 0 && killParticipation <= 6) {
-                apexMatch.storeKillParticipation(killParticipation);
+            boolean result = apexMatch.storeKillParticipation(killParticipation);
+            if (result) {
                 break;
             }
             System.out.println("Invalid response");
         } while (true);
     }
 
-    // REQUIRES: the apex match that was instantiated in consoleStart()
-    // MODIFIES: this
+    // REQUIRES: a ranked points (RP) value
+    // MODIFIES: this, apexMatch
     // EFFECTS: stores ranked points data for the apex match
-    //          while true in the do-while loop, if any of the answers submitted match the appropriate rp
-    //          range (symbolizing the max amount of rp possible in the game), the data will be stored, otherwise
-    //          a value outside of the range will break the loop and prompt an invalid response message
+    //
+    //          while true, the inserted RP value will call upon its respective method in ApexMatch
+    //          (storeRankedPoints) where it will confirm the appropriate RP range. If the result is true,
+    //          the loop will break and prompt the next message, otherwise it will prompt an invalid response
     public void insertRankedPoints(ApexMatch apexMatch) {
         do {
             System.out.println("Please enter your RP gain/loss:\n");
@@ -125,8 +128,8 @@ public class ApexSummaryLog {
             int rankedPoints = in.nextInt();
             System.out.println("You entered " + rankedPoints);
 
-            if (rankedPoints >= 0 && rankedPoints <= 250) {
-                apexMatch.storeRankedPoints(rankedPoints);
+            boolean result = apexMatch.storeRankedPoints(rankedPoints);
+            if (result) {
                 break;
             }
             System.out.println("Invalid response");
