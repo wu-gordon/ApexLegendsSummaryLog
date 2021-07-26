@@ -25,35 +25,34 @@ public class RankDivisionRangeCalc {
     // REQUIRES: the player's current RP acquired in Bronze
     // MODIFIES: this
     // EFFECTS: promotes player to Silver
-    public int rankPromotionBronze() {
+    public int rankPromotionFromBronze() {
         return 0; // stub
     }
-
     // REQUIRES: the player's current RP acquired in Silver
     // MODIFIES: this
     // EFFECTS: promotes player to Gold
-    public int rankPromotionSilver() {
+    public int rankPromotionFromSilver() {
         return 0; // stub
     }
 
     // REQUIRES: the player's current RP acquired in Gold
     // MODIFIES: this
     // EFFECTS: promotes player to Platinum
-    public int rankPromotionGold() {
+    public int rankPromotionFromGold() {
         return 0; // stub
     }
 
     // REQUIRES: the player's current RP acquired in Platinum
     // MODIFIES: this
     // EFFECTS: promotes player to Diamond
-    public int rankPromotionPlatinum() {
+    public int rankPromotionFromPlatinum() {
         return 0; // stub
     }
 
     // REQUIRES: the player's current RP acquired in Diamond
     // MODIFIES: this
     // EFFECTS: promotes player to Masters/Predator
-    public int rankPromotionDiamond() {
+    public int rankPromotionFromDiamond() {
         return 0; // stub
     }
 }
