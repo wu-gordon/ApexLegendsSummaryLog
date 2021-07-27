@@ -28,6 +28,7 @@ public class RankDivisionRangeCalc {
     public int rankPromotionFromBronze() {
         return 0; // stub
     }
+
     // REQUIRES: the player's current RP acquired in Silver
     // MODIFIES: this
     // EFFECTS: promotes player to Gold
