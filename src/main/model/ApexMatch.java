@@ -70,23 +70,6 @@ public class ApexMatch {
         }
     }
 
-    // getters
-    public String getRank() {
-        return rank;
-    }
-
-    public int getRp() {
-        return rp;
-    }
-
-    public int getKp() {
-        return kp;
-    }
-
-    public int getPlacement() {
-        return placement;
-    }
-
     // EFFECTS: prints out a summary of ranked division, placement, kill participation and ranked points as a
     //          single entry for each apex match
     @Override

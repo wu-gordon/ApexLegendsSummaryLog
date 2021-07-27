@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 // Unit tests for ApexMatch Class
 public class ApexMatchTest {
@@ -56,6 +57,17 @@ public class ApexMatchTest {
 
         assertFalse(testMatch1.storeRankedPoints(-1));
         assertFalse(testMatch1.storeRankedPoints(251));
+    }
+
+    @Test
+    void testToString() {
+        testMatch1.storeRankedDivision("Gold");
+        testMatch1.storePlacement(5);
+        testMatch1.storeKillParticipation(3);
+        testMatch1.storeRankedPoints(75);
+
+        assertEquals("Division: " + "gold" + "\n" + "Placement: " + 5 + "\n" + "Kill Participation (KP): "
+                + 3 + "\n" + "Ranked Points (RP): " + 75 + "\n", testMatch1.toString());
     }
 }
 
