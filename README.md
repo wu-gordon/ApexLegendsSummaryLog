@@ -1,4 +1,4 @@
-# Apex Legends Ranked Points (RP) Match History Log 
+# Apex Legends Ranked Points (RP) Match History Log
 
 ## *Evaluate your ranked session progress in an organized fashion*
 
@@ -8,16 +8,16 @@
 
 Inspired by the free-to-play battle royale-hero shooter game Apex Legends, developed by Respawn
 Entertainment, this application allows players to visualize a game by game breakdown of their
-ranked sessions. 
+ranked sessions.
 
-At the beginning of each session, players will be asked to select their appropriate ranked division (Bronze, 
+At the beginning of each session, players will be asked to select their appropriate ranked division (Bronze,
 Silver, Gold, Platinum, Diamond, Masters/Predator). At the end of each game, players will be able to record three
-unique values: the overall placement among sixty teams of three, a kill participation (KP) value which consists a 
+unique values: the overall placement among sixty teams of three, a kill participation (KP) value which consists a
 combined total of kills and assists, and a positive/negative RP value based on the quality of their game.
- 
+
 After entering these values, players will be prompted to add data for a new match. If selected "yes", the same values
-will be requested from the player again, until "no" is selected to indicate completion of their ranked session. In the 
-event that a player promotes from their current division, they may select the next appropriate rank division when 
+will be requested from the player again, until "no" is selected to indicate completion of their ranked session. In the
+event that a player promotes from their current division, they may select the next appropriate rank division when
 re-entering their data for the following game(s).
 
 Next, a match history log of all the games that have been recorded will be printed out in chronological order. Players
@@ -42,7 +42,7 @@ played in.
 > **6th - 5th** = +30 RP </P>
 > **4th - 3rd** = +40 RP </P>
 > **2nd** = +60 RP </P>
-> **1st** = +100 RP 
+> **1st** = +100 RP
 
 **Per game Entry Cost (EC) based on Division**
 >
@@ -54,13 +54,13 @@ played in.
 > **Master/Predator:** EC = -60 RP
 
 **Ranked Points (RP) ranges between Divisions**
-> 
+>
 > **Bronze:** (0 - 900 RP) *300 RP per tier*
 >> **Bronze IV** = 0 RP </P>
 >> **Bronze III** = 300 RP </P>
 >> **Bronze II** = 600 RP </P>
 >> **Bronze I** = 900 RP
-> 
+>
 > **Silver:** (1200 - 2400 RP) *400 RP per tier*
 >> **Silver IV** = 1200 RP </P>
 >> **Silver III** = 1600 RP </P>
@@ -78,26 +78,26 @@ played in.
 >> **Platinum III** = 5400 RP </P>
 >> **Platinum II** = 6000 RP </P>
 >> **Platinum I** = 6600 RP
-> 
+>
 > **Diamond** (7200 - 9300 RP) *700 RP per tier*
 >> **Diamond IV** = 7200 RP </P>
 >> **Diamond III** = 7900 RP </P>
 >> **Diamond II** = 8600 RP </P>
 >> **Diamond I** = 9300 RP
-> 
+>
 > **Masters/Predator** (10,000+ RP)
 >> *No tiers, just raw RP gains from here on out*
 
 **Who will use it?**
 
 Since the game only allows players to view the data from their most recently played game, the functionality of this
-application is designed for competitive Apex Legends players who enjoy grinding out long sessions with 
+application is designed for competitive Apex Legends players who enjoy grinding out long sessions with
 friends and want to have a record of their ranked progression.
- 
+
 **Why is this project of interest to you?**
 
-This project interests me because Apex Legends is currently my favourite video game. I have been playing 
-this game for the past 8 months and I am still in love with it. For this reason, I knew I had to create 
+This project interests me because Apex Legends is currently my favourite video game. I have been playing
+this game for the past 8 months and I am still in love with it. For this reason, I knew I had to create
 an application that I can benefit from as well as players who share a similar competitive mindset. </P>
 ***Interesting fact**: The highest rank I've reached is Diamond IV 7524 RP. I also stream Apex Legends at Twitch.tv/
 maangchiii*
@@ -111,7 +111,5 @@ maangchiii*
 - As a user, I want to be able to insert a ranked points (RP) value after each game
 - As a user, I want to be able to re-enter game data for different games
 - As a user, I want to be able to input game data for a different ranked division in the event of a division promotion
-- As a user, I want to be able to have a match history log that will display the list of recorded games played in 
-chronological order including the stored game data
-
-//testing for push because github isn't seeing my most recent pushes
+- As a user, I want to be able to have a match history log that will display the list of recorded games played in
+  chronological order including the stored game data
