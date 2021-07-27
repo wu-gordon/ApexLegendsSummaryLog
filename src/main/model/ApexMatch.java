@@ -7,11 +7,11 @@ public class ApexMatch {
     private int kp;
     private int placement;
 
-    public ApexMatch(String rankDiv, int place, int killPart, int rankPoints) {
-        rank = rankDiv;
-        placement = place;
-        kp = killPart;
-        rp = rankPoints;
+    public ApexMatch() {
+        rank = "";
+        placement = 0;
+        kp = 0;
+        rp = 0;
     }
 
     // REQUIRES: a ranked division
@@ -19,6 +19,7 @@ public class ApexMatch {
     // EFFECTS: if the submitted rank division matches the appropriate spelling (non-case sensitive), the division
     //          will be stored as a rank and return true; otherwise false
     public boolean storeRankedDivision(String division) {
+        division = division.toLowerCase();
         if (division.equals("bronze") || division.equals("silver") || division.equals("gold")
                 || division.equals("platinum") || division.equals("diamond")
                 || division.equals("masters/predator")) {
@@ -69,6 +70,7 @@ public class ApexMatch {
         }
     }
 
+    // getters
     public String getRank() {
         return rank;
     }
@@ -85,8 +87,6 @@ public class ApexMatch {
         return placement;
     }
 
-    // REQUIRES: setters above
-    // MODIFIES: this
     // EFFECTS: prints out a summary of ranked division, placement, kill participation and ranked points as a
     //          single entry for each apex match
     @Override

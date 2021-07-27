@@ -23,7 +23,7 @@ public class ApexSummaryLog {
         MatchLog matches = new MatchLog();
 
         do {
-            ApexMatch apexMatch = new ApexMatch("", 0,0, 0);
+            ApexMatch apexMatch = new ApexMatch();
 
             selectRankDivision(apexMatch);
             insertPlacement(apexMatch);
@@ -59,7 +59,6 @@ public class ApexSummaryLog {
             System.out.println("[Bronze, Silver, Gold, Platinum, Diamond, Masters/Predator]\n");
 
             String rank = in.nextLine();
-            rank = rank.toLowerCase();
             System.out.println("You entered " + rank);
 
             boolean result = apexMatch.storeRankedDivision(rank);

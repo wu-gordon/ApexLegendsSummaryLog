@@ -8,41 +8,54 @@ import static org.junit.jupiter.api.Assertions.*;
 // Unit tests for ApexMatch Class
 public class ApexMatchTest {
     private ApexMatch testMatch1;
-    private ApexMatch testMatch2;
-    private ApexMatch testMatch3;
-    private ApexMatch testMatch4;
-
 
     @BeforeEach
     void runBefore() {
-        testMatch1 = new ApexMatch("Bronze", 0,0,0);
-        testMatch2 = new ApexMatch("Bronze", 20, 0, 0);
-        testMatch3 = new ApexMatch("Diamond", 1, 6, 202);
-        testMatch4 = new ApexMatch("Masters/Predator",1, 6, 190);
+        testMatch1 = new ApexMatch();
     }
 
     @Test
-    void testToStringValid() {
-        assertTrue(testMatch1.toString().contains("Division: " + "Bronze" + "\n" + "Placement: " + 0 + "\n"
-                + "Kill Participation (KP): " + 0 + "\n" + "Ranked Points (RP): " + 0 + "\n"));
-        assertTrue(testMatch2.toString().contains("Division: " + "Bronze" + "\n" + "Placement: " + 20 + "\n"
-                + "Kill Participation (KP): " + 0 + "\n" + "Ranked Points (RP): " + 0 + "\n"));
-        assertTrue(testMatch3.toString().contains("Division: " + "Diamond" + "\n" + "Placement: " + 1 + "\n"
-                + "Kill Participation (KP): " + 6 + "\n" + "Ranked Points (RP): " + 202 + "\n"));
-        assertTrue(testMatch4.toString().contains("Division: " + "Masters/Predator" + "\n" + "Placement: " + 1 + "\n"
-                + "Kill Participation (KP): " + 6 + "\n" + "Ranked Points (RP): " + 190 + "\n"));
+    void testStoreRankedDivision() {
+        assertTrue(testMatch1.storeRankedDivision("Bronze"));
+        assertTrue(testMatch1.storeRankedDivision("bronze"));
+        assertTrue(testMatch1.storeRankedDivision("silver"));
+        assertTrue(testMatch1.storeRankedDivision("gOld"));
+        assertTrue(testMatch1.storeRankedDivision("platInum"));
+        assertTrue(testMatch1.storeRankedDivision("diaMond"));
+        assertTrue(testMatch1.storeRankedDivision("masTers/Predator"));
+
+        assertFalse(testMatch1.storeRankedDivision("brons"));
+        assertFalse(testMatch1.storeRankedDivision("Iron"));
     }
 
     @Test
-    void testToStringInvalid() {
-        assertFalse(testMatch1.toString().contains("Division: " + "Bronze" + "\n" + "Placement: " + 21 + "\n"
-                + "Kill Participation (KP): " + 0 + "\n" + "Ranked Points (RP): " + 0 + "\n"));
-        assertFalse(testMatch1.toString().contains("Division: " + "Bronze" + "\n" + "Placement: " + 20 + "\n"
-                + "Kill Participation (KP): " + 7 + "\n" + "Ranked Points (RP): " + 0 + "\n"));
-        assertFalse(testMatch1.toString().contains("Division: " + "Bronze" + "\n" + "Placement: " + 20 + "\n"
-                + "Kill Participation (KP): " + 0 + "\n" + "Ranked Points (RP): " + 251 + "\n"));
-        assertFalse(testMatch1.toString().contains("Division: " + "Bronze" + "\n" + "Placement: " + 20 + "\n"
-                + "Kill Participation (KP): " + -1 + "\n" + "Ranked Points (RP): " + 0 + "\n"));
+    void testStorePlacement() {
+        assertTrue(testMatch1.storePlacement(0));
+        assertTrue(testMatch1.storePlacement(5));
+        assertTrue(testMatch1.storePlacement(20));
+
+        assertFalse(testMatch1.storePlacement(-1));
+        assertFalse(testMatch1.storePlacement(21));
+    }
+
+    @Test
+    void testStoreKillParticipation() {
+        assertTrue(testMatch1.storeKillParticipation(0));
+        assertTrue(testMatch1.storeKillParticipation(3));
+        assertTrue(testMatch1.storeKillParticipation(6));
+
+        assertFalse(testMatch1.storeKillParticipation(-1));
+        assertFalse(testMatch1.storeKillParticipation(7));
+    }
+
+    @Test
+    void testStoreRankedPoints() {
+        assertTrue(testMatch1.storeRankedPoints(0));
+        assertTrue(testMatch1.storeRankedPoints(190));
+        assertTrue(testMatch1.storeRankedPoints(250));
+
+        assertFalse(testMatch1.storeRankedPoints(-1));
+        assertFalse(testMatch1.storeRankedPoints(251));
     }
 }
 
