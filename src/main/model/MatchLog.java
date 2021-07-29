@@ -1,6 +1,6 @@
 package model;
 
-// a match log that is created per ranked session where all apex match data will be stored
+// a match log created once per ranked session where all apex match data will be stored
 import java.util.ArrayList;
 
 public class MatchLog {

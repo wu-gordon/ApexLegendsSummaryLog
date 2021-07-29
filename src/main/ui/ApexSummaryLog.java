@@ -2,6 +2,7 @@ package ui;
 
 import model.ApexMatch;
 import model.MatchLog;
+import model.RankedPointsCalculator;
 
 import java.util.Scanner;
 
@@ -9,9 +10,11 @@ import java.util.Scanner;
 public class ApexSummaryLog {
 
     private static Scanner in;
+    private RankedPointsCalculator rpCalc;
 
     public ApexSummaryLog() {
         in = new Scanner(System.in);
+        rpCalc = new RankedPointsCalculator();
         System.out.println("Are you ready to begin your ranked session?");
         consoleStart();
     }
@@ -29,7 +32,9 @@ public class ApexSummaryLog {
             selectRankDivision(apexMatch);
             insertPlacement(apexMatch);
             insertKillParticipation(apexMatch);
-            insertRankedPoints(apexMatch);
+
+            apexMatch.setRp(rpCalc.calculateRankEntryCost(apexMatch.getRank(),
+                    apexMatch.getPlacement(), apexMatch.getKp()));
 
             matches.addToList(apexMatch);
             System.out.println("Would you like to add data for a new match?");
@@ -107,28 +112,6 @@ public class ApexSummaryLog {
             System.out.println("You entered " + killParticipation);
 
             boolean result = apexMatch.storeKillParticipation(killParticipation);
-            if (result) {
-                break;
-            }
-            System.out.println("Invalid response");
-        } while (true);
-    }
-
-    // REQUIRES: a ranked points (RP) value
-    // MODIFIES: this, apexMatch
-    // EFFECTS: stores ranked points data for the apex match
-    //
-    //          while true, the inserted RP value will call upon its respective method in ApexMatch
-    //          (storeRankedPoints) where it will confirm the appropriate RP range. If the result is true,
-    //          the loop will break and prompt the next message, otherwise it will prompt an invalid response
-    public void insertRankedPoints(ApexMatch apexMatch) {
-        do {
-            System.out.println("Please enter your RP gain/loss:\n");
-
-            int rankedPoints = in.nextInt();
-            System.out.println("You entered " + rankedPoints);
-
-            boolean result = apexMatch.storeRankedPoints(rankedPoints);
             if (result) {
                 break;
             }

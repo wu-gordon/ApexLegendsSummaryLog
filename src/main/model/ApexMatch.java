@@ -2,10 +2,11 @@ package model;
 
 // game values of an apex match
 public class ApexMatch {
+
     private String rank;
-    private int rp;
-    private int kp;
     private int placement;
+    private int kp;
+    private int rp;
 
     public ApexMatch() {
         rank = "";
@@ -57,17 +58,21 @@ public class ApexMatch {
         }
     }
 
-    // REQUIRES: a ranked points value
-    // MODIFIES: this
-    // EFFECTS: if the submitted ranked points value matches the appropriate RP range (symbolizing the max amount
-    //          of RP gain possible in the game), the points wil be stored as rp and return true; otherwise false
-    public boolean storeRankedPoints(int points) {
-        if (points >= 0 && points <= 250) {
-            rp = points;
-            return true;
-        } else {
-            return false;
-        }
+    // getters and setters
+    public String getRank() {
+        return rank;
+    }
+
+    public int getPlacement() {
+        return placement;
+    }
+
+    public int getKp() {
+        return kp;
+    }
+
+    public void setRp(int rp) {
+        this.rp = rp;
     }
 
     // EFFECTS: prints out a summary of ranked division, placement, kill participation and ranked points as a
