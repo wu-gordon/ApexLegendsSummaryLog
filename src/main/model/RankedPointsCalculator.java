@@ -58,10 +58,11 @@ public class RankedPointsCalculator {
 
     public int calculateRankEntryCost(String rankDivision, int placement, int killsAssists) {
         int entryCost = rankEntryCost.get(rankDivision);
-        placementRpAndKpMultiplier = placementKpMultiplier.get(placement);
 
-        if (placement >= 14) {
-            rankEntryCost.get("bronze");
+        if (placement > 14) {
+            placementRpAndKpMultiplier = placementKpMultiplier.get(14);
+        } else {
+            placementRpAndKpMultiplier = placementKpMultiplier.get(placement);
         }
         return entryCost + placementRpAndKpMultiplier[0] + (killsAssists * placementRpAndKpMultiplier[1]);
     }

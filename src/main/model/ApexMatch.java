@@ -37,7 +37,7 @@ public class ApexMatch {
     // EFFECTS: if the submitted placement value matches the appropriate placement range (symbolizing 20 teams of 3)
     //          the place will be stored as placement and return true; otherwise false
     public boolean storePlacement(int place) {
-        if (place >= 0 && place <= 20) {
+        if (place > 0 && place <= 20) {
             placement = place;
             return true;
         } else {

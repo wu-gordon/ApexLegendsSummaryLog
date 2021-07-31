@@ -1,6 +1,7 @@
 package tests;
 
 import model.ApexMatch;
+import model.RankedPointsCalculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,10 +10,12 @@ import static org.junit.jupiter.api.Assertions.*;
 // Unit tests for ApexMatch Class
 public class ApexMatchTest {
     private ApexMatch testMatch1;
+    private RankedPointsCalculator rpCalc;
 
     @BeforeEach
     void runBefore() {
         testMatch1 = new ApexMatch();
+        rpCalc = new RankedPointsCalculator();
     }
 
     @Test
@@ -31,10 +34,11 @@ public class ApexMatchTest {
 
     @Test
     void testStorePlacement() {
-        assertTrue(testMatch1.storePlacement(0));
+        assertTrue(testMatch1.storePlacement(1));
         assertTrue(testMatch1.storePlacement(5));
         assertTrue(testMatch1.storePlacement(20));
 
+        assertFalse(testMatch1.storePlacement(0));
         assertFalse(testMatch1.storePlacement(-1));
         assertFalse(testMatch1.storePlacement(21));
     }
@@ -57,13 +61,41 @@ public class ApexMatchTest {
     }
 
     @Test
+    void testGetPlacement() {
+        testMatch1.storePlacement(1);
+
+        assertEquals(1, testMatch1.getPlacement());
+    }
+
+    @Test
+    void testGetKp() {
+        testMatch1.storeKillParticipation(6);
+
+        assertEquals(6, testMatch1.getKp());
+    }
+
+    @Test
+    void testSetRp() {
+        testMatch1.storeRankedDivision("bronze");
+        testMatch1.storePlacement(1);
+        testMatch1.storeKillParticipation(6);
+        testMatch1.setRp(rpCalc.calculateRankEntryCost(testMatch1.getRank(), testMatch1.getPlacement(),
+                testMatch1.getKp()));
+
+        assertEquals("Division: " + "bronze" + "\n" + "Placement: " + 1 + "\n" + "Kill Participation (KP): "
+                + 6 + "\n" + "Ranked Points (RP): " + 250 + "\n", testMatch1.toString());
+    }
+
+    @Test
     void testToString() {
-        testMatch1.storeRankedDivision("Gold");
+        testMatch1.storeRankedDivision("gold");
         testMatch1.storePlacement(5);
         testMatch1.storeKillParticipation(3);
+        testMatch1.setRp(rpCalc.calculateRankEntryCost(testMatch1.getRank(), testMatch1.getPlacement(),
+                testMatch1.getKp()));
 
-//        assertEquals("Division: " + "gold" + "\n" + "Placement: " + 5 + "\n" + "Kill Participation (KP): "
-//                + 3 + "\n" + "Ranked Points (RP): " + 75 + "\n", testMatch1.toString());
+        assertEquals("Division: " + "gold" + "\n" + "Placement: " + 5 + "\n" + "Kill Participation (KP): "
+                + 3 + "\n" + "Ranked Points (RP): " + 51 + "\n", testMatch1.toString());
     }
 }
 
