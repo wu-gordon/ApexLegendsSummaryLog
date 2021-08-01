@@ -3,19 +3,35 @@ package ui;
 import model.ApexMatch;
 import model.MatchLog;
 import model.RankedPointsCalculator;
+import org.json.JSONObject;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import javax.swing.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 // main console application
 public class ApexSummaryLog {
 
-    private static Scanner in;
+    private MatchLog matches;
     private RankedPointsCalculator rpCalc;
 
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+    private static final String JSON_STORE = "./data/matchLog.json";
+
     public ApexSummaryLog() {
-        in = new Scanner(System.in);
+        matches = new MatchLog();
         rpCalc = new RankedPointsCalculator();
-        System.out.println("Are you ready to begin your ranked session?");
+
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
+
+        System.out.println("Your ranked session has begun!");
         consoleStart();
     }
 
@@ -24,32 +40,48 @@ public class ApexSummaryLog {
     //          while true, a new match entry will be created every time "yes" is selected by the player, until
     //          "no" is selected which will break the loop and a summary log gets printed to complete the session
     public void consoleStart() {
-        MatchLog matches = new MatchLog();
-
         do {
-            ApexMatch apexMatch = new ApexMatch();
-
-            selectRankDivision(apexMatch);
-            insertPlacement(apexMatch);
-            insertKillParticipation(apexMatch);
-
-            apexMatch.setRp(rpCalc.calculateRankEntryCost(apexMatch.getRank(),
-                    apexMatch.getPlacement(), apexMatch.getKp()));
-
-            matches.addToList(apexMatch);
-            System.out.println("Would you like to add data for a new match?");
-            System.out.println("[Yes/No]\n");
-            in.nextLine();
-            String response = in.nextLine();
+            displayMenu();
+            Scanner in = new Scanner(System.in);
+            int response = in.nextInt();
             System.out.println("You entered " + response);
 
-            response = response.toLowerCase();
-
-            if (response.equals("no")) {
+            if (response == 1) {
+                addRankedGameData();
+            } else if (response == 2) {
+                saveApexMatchesLog();
+            } else if (response == 3) {
+                loadMatchHistoryData();
+            } else if (response == 4) {
+                matches.printSummaryLog();
+            } else if (response == 5) {
                 break;
+            } else {
+                System.out.println("Invalid response");
             }
         } while (true);
-        matches.printSummaryLog();
+    }
+
+    public void displayMenu() {
+        System.out.println("\nPlease select from the following options:");
+        System.out.println("\t1 -> ADD ranked game data");
+        System.out.println("\t2 -> SAVE Apex matches to file");
+        System.out.println("\t3 -> LOAD match history data");
+        System.out.println("\t4 -> PRINT match history data");
+        System.out.println("\t5 -> QUIT");
+    }
+
+    public void addRankedGameData() {
+        ApexMatch apexMatch = new ApexMatch();
+
+        selectRankDivision(apexMatch);
+        insertPlacement(apexMatch);
+        insertKillParticipation(apexMatch);
+
+        apexMatch.setRp(rpCalc.calculateRankEntryCost(apexMatch.getRank(),
+                apexMatch.getPlacement(), apexMatch.getKp()));
+
+        matches.addToList(apexMatch);
     }
 
     // REQUIRES: a ranked division
@@ -64,6 +96,7 @@ public class ApexSummaryLog {
             System.out.println("Please select your appropriate ranked division:");
             System.out.println("[Bronze, Silver, Gold, Platinum, Diamond, Masters/Predator]\n");
 
+            Scanner in = new Scanner(System.in);
             String rank = in.nextLine();
             System.out.println("You entered " + rank);
 
@@ -86,6 +119,7 @@ public class ApexSummaryLog {
         do {
             System.out.println("Please enter your placement:\n");
 
+            Scanner in = new Scanner(System.in);
             int placement = in.nextInt();
             System.out.println("You entered " + placement);
 
@@ -108,6 +142,7 @@ public class ApexSummaryLog {
         do {
             System.out.println("Please enter your kill participation (KP):\n");
 
+            Scanner in = new Scanner(System.in);
             int killParticipation = in.nextInt();
             System.out.println("You entered " + killParticipation);
 
@@ -117,5 +152,27 @@ public class ApexSummaryLog {
             }
             System.out.println("Invalid response");
         } while (true);
+    }
+
+    public void saveApexMatchesLog() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(matches);
+            jsonWriter.close();
+
+            JSONObject jsonObject = new JSONObject();
+            System.out.println("Saved all Apex matches to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    public void loadMatchHistoryData() {
+        try {
+            matches = jsonReader.read();
+            System.out.println("Loaded all Apex matches from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 }

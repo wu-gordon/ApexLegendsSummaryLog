@@ -1,18 +1,27 @@
 package model;
 
-// game values of an apex match
-public class ApexMatch {
+import org.json.JSONObject;
+import persistence.Writable;
 
+// game values of an apex match
+public class ApexMatch implements Writable {
     private String rank;
     private int placement;
     private int kp;
     private int rp;
 
     public ApexMatch() {
-        rank = "";
-        placement = 0;
-        kp = 0;
-        rp = 0;
+        this.rank = "";
+        this.placement = 0;
+        this.kp = 0;
+        this.rp = 0;
+    }
+
+    public ApexMatch(String rank, int placement, int kp, int rp) {
+        this.rank = rank;
+        this.placement = placement;
+        this.kp = kp;
+        this.rp = rp;
     }
 
     // REQUIRES: a ranked division
@@ -29,7 +38,6 @@ public class ApexMatch {
         } else {
             return false;
         }
-
     }
 
     // REQUIRES: a placement value
@@ -73,6 +81,15 @@ public class ApexMatch {
 
     public void setRp(int rp) {
         this.rp = rp;
+    }
+
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("rank", rank);
+        json.put("placement", placement);
+        json.put("kp", kp);
+        json.put("rp", rp);
+        return json;
     }
 
     // EFFECTS: prints out a summary of ranked division, placement, kill participation and ranked points as a

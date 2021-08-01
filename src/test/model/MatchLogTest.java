@@ -1,8 +1,5 @@
-package tests;
+package model;
 
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
-import model.ApexMatch;
-import model.MatchLog;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
