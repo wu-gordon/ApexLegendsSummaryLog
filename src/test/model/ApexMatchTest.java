@@ -1,5 +1,6 @@
 package model;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,6 +10,8 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ApexMatchTest {
     private ApexMatch testMatch1;
     private RankedPointsCalculator rpCalc;
+
+
 
     @BeforeEach
     void runBefore() {
@@ -82,6 +85,20 @@ public class ApexMatchTest {
 
         assertEquals("Division: " + "bronze" + "\n" + "Placement: " + 1 + "\n" + "Kill Participation (KP): "
                 + 6 + "\n" + "Ranked Points (RP): " + 250 + "\n", testMatch1.toString());
+    }
+
+    @Test
+    void testToJson() {
+        JSONObject json = new JSONObject();
+        json.put("rank", "bronze");
+        json.put("placement", 1);
+        json.put("kp", 6);
+        json.put("rp", 250);
+
+        assertEquals("bronze", json.get("rank"));
+        assertEquals(1, json.getInt("placement"));
+        assertEquals(6, json.getInt("kp"));
+        assertEquals(250, json.getInt("rp"));
     }
 
     @Test
