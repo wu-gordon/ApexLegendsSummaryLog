@@ -17,6 +17,7 @@ class RankedPointsCalculatorTest {
     void runBefore() {
         rankEntryCost = new HashMap<>();
         placementKpMultiplier = new HashMap<>();
+        rpCalc = new RankedPointsCalculator();
     }
 
     @Test
@@ -39,6 +40,17 @@ class RankedPointsCalculatorTest {
 
     @Test
     void testCalculateRankEntryCost() {
-        rpCalc = new RankedPointsCalculator();
+        Integer[] kpMultiplier13 = new Integer[]{5, 10};
+        Integer[] kpMultiplier14AndOver = new Integer[]{0, 10};
+        placementKpMultiplier.put(13, kpMultiplier13);
+        placementKpMultiplier.put(15, kpMultiplier14AndOver);
+        placementKpMultiplier.put(16, kpMultiplier14AndOver);
+
+        rpCalc.calculateRankEntryCost("bronze", 13, 6);
+        assertEquals(kpMultiplier13, placementKpMultiplier.get(13));
+        rpCalc.calculateRankEntryCost("bronze", 15, 6);
+        assertEquals(kpMultiplier14AndOver, placementKpMultiplier.get(15));
+        rpCalc.calculateRankEntryCost("bronze", 16, 6);
+        assertEquals(kpMultiplier14AndOver, placementKpMultiplier.get(16));
     }
 }
