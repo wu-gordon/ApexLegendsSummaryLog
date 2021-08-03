@@ -3,13 +3,14 @@ package model;
 import org.json.JSONObject;
 import persistence.Writable;
 
-// game values of an apex match
+// game data values of an apex match
 public class ApexMatch implements Writable {
     private String rank;
     private int placement;
     private int kp;
     private int rp;
 
+    // constructor without parameters
     public ApexMatch() {
         this.rank = "";
         this.placement = 0;
@@ -17,6 +18,7 @@ public class ApexMatch implements Writable {
         this.rp = 0;
     }
 
+    // constructor with parameters
     public ApexMatch(String rank, int placement, int kp, int rp) {
         this.rank = rank;
         this.placement = placement;
@@ -66,23 +68,27 @@ public class ApexMatch implements Writable {
         }
     }
 
-    // getters and setters
+    // returns rank value
     public String getRank() {
         return rank;
     }
 
+    // returns placement value
     public int getPlacement() {
         return placement;
     }
 
+    // returns kp value
     public int getKp() {
         return kp;
     }
 
+    // sets the calculated rp value
     public void setRp(int rp) {
         this.rp = rp;
     }
 
+    // EFFECTS: creates a json object with the following data
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("rank", rank);

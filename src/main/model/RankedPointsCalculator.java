@@ -28,6 +28,7 @@ public class RankedPointsCalculator {
         placementKPMultiplierMap();
     }
 
+    // EFFECTS: a ranked division is used as key in the rankEntryCost hash map to determine its corresponding entry cost
     public void rankEntryCostMap() {
         // Add keys and values (Rank Division, Entry Cost)
         rankEntryCost.put("bronze", 0);
@@ -38,6 +39,9 @@ public class RankedPointsCalculator {
         rankEntryCost.put("masters/predator", -60);
     }
 
+    // EFFECTS: a placement value is used as a key in the placementKPMultiplier hash map to determine its
+    //          corresponding rp value based on the given placement, and weight of the kp multiplier based on on
+    //          the given placement
     public void placementKPMultiplierMap() {
         // Add keys and values (Placement, (RP from placement, KP multiplier))
         placementKpMultiplier.put(14, new Integer[]{0, 10});
@@ -56,6 +60,11 @@ public class RankedPointsCalculator {
         placementKpMultiplier.put(1, new Integer[]{100, 25});
     }
 
+    // REQUIRES: an entry cost
+    // MODIFIES: this
+    // EFFECTS: takes the entry cost based on the selected rank division and calculates the total rp value gained from
+    //          subtracting the entry cost from the sum of the rp value based on given placement and the product of
+    //          kills/assists with the respective kp multiplier
     public int calculateRankEntryCost(String rankDivision, int placement, int killsAssists) {
         int entryCost = rankEntryCost.get(rankDivision);
 

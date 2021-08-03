@@ -32,6 +32,7 @@ class MatchLogTest {
         apexMatchList = new ArrayList<>();
     }
 
+    // checks the added Apex match in the match log
     @Test
     void testAddToList() {
         apexMatch.storeRankedDivision("bronze");
@@ -42,6 +43,7 @@ class MatchLogTest {
         assertEquals("bronze", apexMatchList.get(0).getRank());
     }
 
+    // checks the matches placed in the Apex match list
     @Test
     void testGetMatches() {
         apexMatchList.add(apexMatch);
@@ -51,6 +53,7 @@ class MatchLogTest {
         assertEquals(apexMatchList, matchSummary.getMatches());
     }
 
+    // checks the Apex match data
     @Test
     void testAddApexMatch() {
         apexMatchList.add(new ApexMatch("bronze", 1, 6, 250));
@@ -59,11 +62,13 @@ class MatchLogTest {
         assertEquals(6, apexMatchList.get(0).getKp());
     }
 
+    // checks the size of the match log
     @Test
     void testNumMatches() {
         assertEquals(0, matchSummary.numMatches());
     }
 
+    // checks the added Apex match data and what it prints to the console
     @Test
     void testPrintSummaryLog() {
         apexMatch.storeRankedDivision("bronze");
@@ -79,6 +84,7 @@ class MatchLogTest {
         matchSummary.printSummaryLog();
     }
 
+    // checks the name of the JSON file
     @Test
     void testToJson() {
         JSONObject json = new JSONObject();
@@ -87,6 +93,7 @@ class MatchLogTest {
         assertEquals(matchSummary, json.get("Apex matches"));
     }
 
+    // checks the information inputted into the JSON file
     @Test
     void testMatchesToJson() {
         JSONArray jsonArray = new JSONArray();

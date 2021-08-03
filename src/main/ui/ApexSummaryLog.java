@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-// main console application
+// main console Apex summary log application
 public class ApexSummaryLog {
 
     private MatchLog matches;
@@ -35,10 +35,13 @@ public class ApexSummaryLog {
         consoleStart();
     }
 
-    // EFFECTS: a new match log is created per session where all apex match data will be stored
+    // EFFECTS: starts the application; main hub for the application
+    //          while true, options will be displayed followed by a player response.
+    //          depending on the response, the player will be asked to input the appropriate game data values.
+    //          if anything other than the given response options is inputted, an "Invalid response" message
+    //          will be prompted, allowing the player to re-enter their response
     //
-    //          while true, a new match entry will be created every time "yes" is selected by the player, until
-    //          "no" is selected which will break the loop and a summary log gets printed to complete the session
+    //          *response option 5 of the display menu breaks out of the loop and quits the application*
     public void consoleStart() {
         do {
             displayMenu();
@@ -62,6 +65,7 @@ public class ApexSummaryLog {
         } while (true);
     }
 
+    // EFFECTS: displays menu of options to the player
     public void displayMenu() {
         System.out.println("\nPlease select from the following options:");
         System.out.println("\t1 -> ADD ranked game data");
@@ -71,6 +75,12 @@ public class ApexSummaryLog {
         System.out.println("\t5 -> QUIT");
     }
 
+    // REQUIRES: response option 1 from display menu
+    // MODIFIES: this
+    // EFFECTS: a new Apex match will be created requesting for the following game data values.
+    //          the player will then be asked to select their rank, placement, and kill participation values.
+    //          once inputted, a ranked points (RP) value will be produced, and the match will then be added/saved
+    //          to the list of Apex matches
     public void addRankedGameData() {
         ApexMatch apexMatch = new ApexMatch();
 
@@ -154,6 +164,8 @@ public class ApexSummaryLog {
         } while (true);
     }
 
+    // REQUIRES: response option 2 from display menu
+    // EFFECTS: saves the list of Apex matches to file
     public void saveApexMatchesLog() {
         try {
             jsonWriter.open();
@@ -167,6 +179,9 @@ public class ApexSummaryLog {
         }
     }
 
+    // REQUIRES: response option 3 from display menu
+    // MODIFIES: this
+    // EFFECTS: loads the list of Apex matches from file
     public void loadMatchHistoryData() {
         try {
             matches = jsonReader.read();

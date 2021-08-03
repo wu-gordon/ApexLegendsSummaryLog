@@ -10,6 +10,8 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class JsonReaderTest extends JsonTest {
+
+    // checks the non existent file
     @Test
     void testReaderNonExistentFile() {
         JsonReader reader = new JsonReader("./data/noSuchFile.json");
@@ -21,6 +23,7 @@ class JsonReaderTest extends JsonTest {
         }
     }
 
+    // checks the empty match log file
     @Test
     void testReaderEmptyMatchLog() {
         JsonReader reader = new JsonReader("./data/testReaderEmptyMatchLog.json");
@@ -32,6 +35,7 @@ class JsonReaderTest extends JsonTest {
         }
     }
 
+    // checks the working match log file
     @Test
     void testReaderGeneralMatchLog() {
         JsonReader reader = new JsonReader("./data/testReaderGeneralMatchLog.json");

@@ -9,6 +9,8 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class JsonWriterTest {
+
+    // checks the writer invalid file
     @Test
     void testWriterInvalidFile() {
         try {
@@ -21,6 +23,7 @@ class JsonWriterTest {
         }
     }
 
+    // checks the writer empty match log file
     @Test
     void testWriterEmptyMatchLog() {
         try {

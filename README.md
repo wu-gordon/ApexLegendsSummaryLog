@@ -104,12 +104,22 @@ maangchiii*
 
 # User Stories
 
-**Match History Log**
 - As a user, I want to be able to select a ranked division
 - As a user, I want to be able to insert a placement value after each game
 - As a user, I want to be able to insert a kill participation (KP) value after each game
-- As a user, I want to be able to insert a ranked points (RP) value after each game
+- As a user, I want to be able to receive a ranked points (RP) total after inputting ranked division, placement, 
+  and KP values
 - As a user, I want to be able to re-enter game data for different games
 - As a user, I want to be able to input game data for a different ranked division in the event of a division promotion
 - As a user, I want to be able to have a match history log that will display the list of recorded games played in
   chronological order including the stored game data
+
+## PHASE 2: Additional User Stories
+
+- As a user, I want to be able to choose from a list of options displayed to me after opening the application
+- As a user, I want to be able to add ranked game data from the list of options
+- As a user, I want to be able to save all Apex matches to a JSON file from the list of options
+- As a user, I want to be able to load all Apex match history data from the JSON file, from the list of options
+- As a user, I want to be able to print the Apex match history data after loading the JSON file, from the list of 
+  options
+- As a user, I want to be able to quit the application once the ranked session is over, from the list of options

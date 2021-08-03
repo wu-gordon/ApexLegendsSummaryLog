@@ -19,6 +19,8 @@ public class ApexMatchTest {
         rpCalc = new RankedPointsCalculator();
     }
 
+    // checks ranked division correctness from player response including all types of spelling errors and
+    // case sensitivity
     @Test
     void testStoreRankedDivision() {
         assertTrue(testMatch1.storeRankedDivision("Bronze"));
@@ -33,6 +35,8 @@ public class ApexMatchTest {
         assertFalse(testMatch1.storeRankedDivision("Iron"));
     }
 
+    // checks placement correctness from player response including all types of values over and under the
+    // stated placement range
     @Test
     void testStorePlacement() {
         assertTrue(testMatch1.storePlacement(1));
@@ -44,6 +48,8 @@ public class ApexMatchTest {
         assertFalse(testMatch1.storePlacement(21));
     }
 
+    // checks kill participation (KP) correctness from player response including all types of values over and under
+    // the stated kill participation range
     @Test
     void testStoreKillParticipation() {
         assertTrue(testMatch1.storeKillParticipation(0));
@@ -54,6 +60,7 @@ public class ApexMatchTest {
         assertFalse(testMatch1.storeKillParticipation(7));
     }
 
+    // checks the stored rank division
     @Test
     void testGetRank() {
         testMatch1.storeRankedDivision("bronze");
@@ -61,6 +68,7 @@ public class ApexMatchTest {
         assertEquals("bronze", testMatch1.getRank());
     }
 
+    // checks the stored placement value
     @Test
     void testGetPlacement() {
         testMatch1.storePlacement(1);
@@ -68,6 +76,7 @@ public class ApexMatchTest {
         assertEquals(1, testMatch1.getPlacement());
     }
 
+    // checks the stored kill participation value
     @Test
     void testGetKp() {
         testMatch1.storeKillParticipation(6);
@@ -75,6 +84,7 @@ public class ApexMatchTest {
         assertEquals(6, testMatch1.getKp());
     }
 
+    // checks that the calculated ranked points (RP) value is set to rp
     @Test
     void testSetRp() {
         testMatch1.storeRankedDivision("bronze");
@@ -87,6 +97,7 @@ public class ApexMatchTest {
                 + 6 + "\n" + "Ranked Points (RP): " + 250 + "\n", testMatch1.toString());
     }
 
+    // checks the data stored in the JSON file
     @Test
     void testToJson() {
         JSONObject json = new JSONObject();
@@ -101,6 +112,7 @@ public class ApexMatchTest {
         assertEquals(250, json.getInt("rp"));
     }
 
+    // checks the data inputted and how its shown on the console
     @Test
     void testToString() {
         testMatch1.storeRankedDivision("gold");
