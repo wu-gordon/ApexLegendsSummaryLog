@@ -1,26 +1,26 @@
 {"Apex matches": [
     {
         "kp": 6,
-        "rank": "bronze",
+        "rank": "diamond",
         "placement": 1,
-        "rp": 250
+        "rp": 202
     },
     {
         "kp": 6,
-        "rank": "silver",
+        "rank": "masters/predator",
         "placement": 1,
-        "rp": 238
+        "rp": 190
     },
     {
         "kp": 6,
-        "rank": "gold",
+        "rank": "masters/predator",
         "placement": 1,
-        "rp": 226
+        "rp": 190
     },
     {
         "kp": 6,
-        "rank": "platinum",
+        "rank": "masters/predator",
         "placement": 1,
-        "rp": 214
+        "rp": 190
     }
 ]}
