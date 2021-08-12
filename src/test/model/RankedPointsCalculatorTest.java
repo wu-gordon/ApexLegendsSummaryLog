@@ -20,7 +20,7 @@ class RankedPointsCalculatorTest {
         rpCalc = new RankedPointsCalculator();
     }
 
-    // checks the stored rank division and its corresponding entry cost
+    // EFFECTS: checks the stored rank division and its corresponding entry cost
     @Test
     void testRankEntryCostMap() {
         String rankDivision = "bronze";
@@ -30,7 +30,7 @@ class RankedPointsCalculatorTest {
         assertEquals(entryCost, rankEntryCost.get(rankDivision));
     }
 
-    // checks the stored placement and its corresponding rp value and kp multiplier based on given placement
+    // EFFECTS: checks the stored placement and its corresponding rp value and kp multiplier based on given placement
     @Test
     void testPlacementKPMultiplierMap() {
         int placement = 1;
@@ -40,7 +40,7 @@ class RankedPointsCalculatorTest {
         assertEquals(kpMultiplier, placementKpMultiplier.get(placement));
     }
 
-    // checks the calculated rp value based on given game value data
+    // EFFECTS: checks the calculated rp value based on given game value data
     @Test
     void testCalculateRankEntryCost() {
         Integer[] kpMultiplier13 = new Integer[]{5, 10};

@@ -1,5 +1,6 @@
 package model;
 
+import exceptions.PlacementNotWithinRange;
 import org.json.JSONObject;
 import persistence.Writable;
 
@@ -42,16 +43,15 @@ public class ApexMatch implements Writable {
         }
     }
 
-    // REQUIRES: a placement value
     // MODIFIES: this
     // EFFECTS: if the submitted placement value matches the appropriate placement range (symbolizing 20 teams of 3)
     //          the place will be stored as placement and return true; otherwise false
-    public boolean storePlacement(int place) {
-        if (place > 0 && place <= 20) {
+    public boolean storePlacement(int place) throws PlacementNotWithinRange {
+        if (!(place > 0) || !(place <= 20)) {
+            throw new PlacementNotWithinRange();
+        } else {
             placement = place;
             return true;
-        } else {
-            return false;
         }
     }
 

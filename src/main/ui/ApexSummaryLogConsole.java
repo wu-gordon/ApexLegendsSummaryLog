@@ -1,5 +1,6 @@
 package ui;
 
+import exceptions.PlacementNotWithinRange;
 import model.ApexMatch;
 import model.MatchLog;
 import model.RankedPointsCalculator;
@@ -130,11 +131,13 @@ public class ApexSummaryLogConsole {
             int placement = in.nextInt();
             System.out.println("You entered " + placement);
 
-            boolean result = apexMatch.storePlacement(placement);
-            if (result) {
-                break;
+            try {
+                apexMatch.storePlacement(placement);
+            } catch (PlacementNotWithinRange placementNotWithinRange) {
+                System.out.println("Response is not within placement range. Try again.");
+                insertPlacement(apexMatch);
             }
-            System.out.println("Invalid response");
+            break;
         } while (true);
     }
 

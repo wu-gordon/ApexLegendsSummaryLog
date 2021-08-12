@@ -4,6 +4,7 @@ import ui.gui.ApexSummaryLogGUI;
 
 public class Main {
     public static void main(String[] args) {
-        new ApexSummaryLogGUI();
+//        new ApexSummaryLogGUI();
+        new ApexSummaryLogConsole();
     }
 }

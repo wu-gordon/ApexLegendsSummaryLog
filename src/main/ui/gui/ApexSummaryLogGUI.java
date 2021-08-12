@@ -1,5 +1,6 @@
 package ui.gui;
 
+import exceptions.PlacementNotWithinRange;
 import model.ApexMatch;
 import model.MatchLog;
 import model.RankedPointsCalculator;
@@ -334,7 +335,11 @@ public class ApexSummaryLogGUI extends JFrame {
     // EFFECTS: stores placement input for ranked points calculation panel
     public void setPlacementValueForNextPanel() {
         int placementValue = Integer.parseInt(gameDataInputPanel.getPlacementTextField().getText());
-        apexMatch.storePlacement(placementValue);
+        try {
+            apexMatch.storePlacement(placementValue);
+        } catch (PlacementNotWithinRange placementNotWithinRange) {
+            System.out.println("Placement value is not within range. Try again");
+        }
         gameDataInputPanel.getPlacementTextField().setText("");
         placementLabel.setText(String.valueOf(apexMatch.getPlacement()));
         rankedPointsCalculationPanel.getRankedPointsPanel().add(placementLabel);

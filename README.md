@@ -154,9 +154,17 @@ maangchiii*
 
 - As a user, I want to be able to see all matches added, printed on this page to display a record of the session
 
-## PHASE 4a: Java Language Construct
+## PHASE 4a: TASK 2 - Throwing a checked exception (PlacementNotWithinRange)
 
+For the occasion that a player inputs a placement value that is not within the specified placement range which is
+between 0-20, a PlacementNotWithinRange exception will be thrown from the storePlacement() method in ApexMatch.java.
+The insertPlacement() method in ApexSummaryLogConsole.java has the call to storePlacement() wrapped in a try/catch 
+and notifies the player that the "Placement value is not within range. Try again". 
 
+To test this exception, I modified the testStorePlacement() test method in ApexMatchTest.java by splitting them into
+testStorePlacementNotWithinRange (expects the exception), and testStorePlacementWithinRange (doesn't expect the
+exception). For the remaining tests that call upon storePlacement() and have within-boundary placement values, 
+those test methods threw the PlacementNotWithinRange exception. 
 
 ## PHASE 4b: UML Class Design Diagram Reflection
 

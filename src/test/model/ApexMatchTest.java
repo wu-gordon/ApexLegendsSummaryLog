@@ -1,5 +1,6 @@
 package model;
 
+import exceptions.PlacementNotWithinRange;
 import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,7 +20,7 @@ public class ApexMatchTest {
         rpCalc = new RankedPointsCalculator();
     }
 
-    // checks ranked division correctness from player response including all types of spelling errors and
+    // EFFECTS: checks ranked division correctness from player response including all types of spelling errors and
     // case sensitivity
     @Test
     void testStoreRankedDivision() {
@@ -35,20 +36,49 @@ public class ApexMatchTest {
         assertFalse(testMatch1.storeRankedDivision("Iron"));
     }
 
-    // checks placement correctness from player response including all types of values over and under the
-    // stated placement range
+    // EFFECTS: checks placement correctness from player response within the stated placement range
     @Test
-    void testStorePlacement() {
-        assertTrue(testMatch1.storePlacement(1));
-        assertTrue(testMatch1.storePlacement(5));
-        assertTrue(testMatch1.storePlacement(20));
+    void testStorePlacementWithinRange() {
+        int placement1 = 1;
+        int placement2 = 5;
+        int placement3 = 20;
 
-        assertFalse(testMatch1.storePlacement(0));
-        assertFalse(testMatch1.storePlacement(-1));
-        assertFalse(testMatch1.storePlacement(21));
+        try {
+            testMatch1.storePlacement(1);
+            testMatch1.storePlacement(5);
+            testMatch1.storePlacement(20);
+        } catch (PlacementNotWithinRange e) {
+            fail("Placement value is not within range. Try again.");
+            // should not fail
+        }
+
+        assertEquals(1, placement1);
+        assertEquals(5, placement2);
+        assertEquals(20, placement3);
     }
 
-    // checks kill participation (KP) correctness from player response including all types of values over and under
+    // EFFECTS: checks placement correctness from player response outside of the stated placement range
+    @Test
+    void testStorePlacementNotWithinRange() {
+        int placement1 = 1;
+        int placement2 = 5;
+        int placement3 = 20;
+
+        try {
+            testMatch1.storePlacement(0);
+            testMatch1.storePlacement(-1);
+            testMatch1.storePlacement(20);
+        } catch (PlacementNotWithinRange e) {
+            fail("Placement value is not within range. Try again.");
+            // should fail
+        }
+
+        assertEquals(1, placement1);
+        assertEquals(5, placement2);
+        assertEquals(20, placement3);
+    }
+
+    // EFFECTS: checks kill participation (KP) correctness from player response including all types of values over and under
     // the stated kill participation range
     @Test
     void testStoreKillParticipation() {
@@ -60,7 +90,7 @@ public class ApexMatchTest {
         assertFalse(testMatch1.storeKillParticipation(7));
     }
 
-    // checks the stored rank division
+    // EFFECTS: checks the stored rank division
     @Test
     void testGetRank() {
         testMatch1.storeRankedDivision("bronze");
@@ -68,15 +98,15 @@ public class ApexMatchTest {
         assertEquals("bronze", testMatch1.getRank());
     }
 
-    // checks the stored placement value
+    // EFFECTS: checks the stored placement value
     @Test
-    void testGetPlacement() {
+    void testGetPlacement() throws PlacementNotWithinRange {
         testMatch1.storePlacement(1);
 
         assertEquals(1, testMatch1.getPlacement());
     }
 
-    // checks the stored kill participation value
+    // EFFECTS: checks the stored kill participation value
     @Test
     void testGetKp() {
         testMatch1.storeKillParticipation(6);
@@ -84,9 +114,9 @@ public class ApexMatchTest {
         assertEquals(6, testMatch1.getKp());
     }
 
-    // checks that the calculated ranked points (RP) value is set to rp
+    // EFFECTS: checks that the calculated ranked points (RP) value is set to rp
     @Test
-    void testSetRp() {
+    void testSetRp() throws PlacementNotWithinRange {
         testMatch1.storeRankedDivision("bronze");
         testMatch1.storePlacement(1);
         testMatch1.storeKillParticipation(6);
@@ -97,7 +127,7 @@ public class ApexMatchTest {
                 + 6 + "\n" + "Ranked Points (RP): " + 250 + "\n", testMatch1.toString());
     }
 
-    // checks the data stored in the JSON file
+    // EFFECTS: checks the data stored in the JSON file
     @Test
     void testToJson() {
         JSONObject json = new JSONObject();
@@ -112,9 +142,9 @@ public class ApexMatchTest {
         assertEquals(250, json.getInt("rp"));
     }
 
-    // checks the data inputted and how its shown on the console
+    // EFFECTS: checks the data inputted and how its shown on the console
     @Test
-    void testToString() {
+    void testToString() throws PlacementNotWithinRange {
         testMatch1.storeRankedDivision("gold");
         testMatch1.storePlacement(5);
         testMatch1.storeKillParticipation(3);
