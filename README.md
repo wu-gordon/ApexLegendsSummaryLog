@@ -123,3 +123,49 @@ maangchiii*
 - As a user, I want to be able to print the Apex match history data after loading the JSON file, from the list of 
   options
 - As a user, I want to be able to quit the application once the ranked session is over, from the list of options
+
+## PHASE 3: Optimized User Stories - GUI
+
+**PANEL 1: HOME PAGE**
+
+- As a user, I want to be able to hear the Apex Legends Season 7 Ascension Main theme after running the application
+- As a user, I want to be able to choose between Add, Save, Print, and Load from the drop down menu
+- As a user, I want to be able to use the enter button to confirm a drop down menu option
+- As a user, I want to be able to quit the application using the quit button
+  
+**PANEL 2: RANKED DIVISIONS**
+
+- As a user, I want to be able to select and click the appropriate ranked division button
+
+**PANEL 3: GAME DATA INPUT**
+
+- As a user, I want to be able to have the selected ranked division displayed next to "Division: "
+- As a user, I want to be able to input kill participation data into the "Kills/Assists (KP): " text field
+- As a user, I want to be able to input placement data into the "Placement: " text field
+- As a user, I want to be able to use the enter button to confirm the game data inputted 
+
+**PANEL 4: RANKED POINTS (RP) CALCULATION**
+
+- As a user, I want to be able to see the selected ranked division, kill participation, and placement values confirmed
+- As a user, I want to be able to the total ranked points (RP) gained/lost based on the inputted game data values
+- As a user, I want to be able to use the add button to go back to the home page
+
+**PANEL 5: MATCH HISTORY LOG**
+
+- As a user, I want to be able to see all matches added, printed on this page to display a record of the session
+
+## PHASE 4a: Java Language Construct
+
+
+
+## PHASE 4b: UML Class Design Diagram Reflection
+
+**If you had more time to work on the project, is there any refactoring that you would do to improve your design?**
+
+If I had more time to work on this project, I would refactor my ApexSummaryLogGUI.java class due to methods 
+such as menuSelect1, menuSelect2, and menuSelect3 having bad coupling. The content within those classes has code 
+copied and pasted from my JsonReader.java and JsonWriter.Java classes. In terms of cohesion, I attempted to create
+good cohesion within my classes and placed the ActionListeners for different buttons into the ApexSummaryLogGUI.java
+class which served as my "main hub". However, I think that I could create even better cohesion inside
+ApexSummaryLogGUI.java if I had separated those ActionListeners into their own corresponding classes, making the code 
+less cluttered and easier to read for others.

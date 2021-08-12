@@ -3,6 +3,7 @@ package ui.gui;
 import javax.swing.*;
 import java.awt.*;
 
+// Panel 2: (Selected: Add - Ranked game data) A panel with rank division buttons that bring you to panel 3
 public class RankedDivisionsPanel {
     private JPanel divisionsPanel;
     private JLabel divisionsHeaderTitle;
@@ -20,6 +21,7 @@ public class RankedDivisionsPanel {
     private JButton diamond;
     private JButton mastersPredator;
 
+    // EFFECTS: creates appropriate instances
     public RankedDivisionsPanel() {
         this.divisionsPanel = new JPanel();
         this.divisionsPanel.setLayout(new BoxLayout(this.divisionsPanel, BoxLayout.Y_AXIS));
@@ -34,6 +36,7 @@ public class RankedDivisionsPanel {
         launchRankedDivisionsPanel();
     }
 
+    // EFFECTS: launches the ranked divisions panel
     public void launchRankedDivisionsPanel() {
         rankedTitle1();
         divisionSpacing2();
@@ -50,12 +53,14 @@ public class RankedDivisionsPanel {
         mastersPredatorButton();
     }
 
+    // EFFECTS: creates a space between top frame -> title
     public void divisionSpacing1() {
         this.divisionSpace1 = new JLabel(" ");
         this.divisionSpace1.setFont(new Font("HK Grotesk", Font.BOLD, 30));
         this.divisionsPanel.add(this.divisionSpace1);
     }
 
+    // EFFECTS: creates the title for this panel
     public void rankedTitle1() {
         this.divisionsHeaderTitle = new JLabel("Select Your Ranked Division:");
         this.divisionsHeaderTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -63,12 +68,14 @@ public class RankedDivisionsPanel {
         this.divisionsPanel.add(this.divisionsHeaderTitle);
     }
 
+    // EFFECTS: creates a space between title -> bronze button
     public void divisionSpacing2() {
         this.divisionSpace2 = new JLabel(" ");
         this.divisionSpace2.setFont(new Font("HK Grotesk", Font.BOLD, 95));
         this.divisionsPanel.add(this.divisionSpace2);
     }
 
+    // EFFECTS: creates a button for "Bronze"
     public void bronzeButton() {
         this.divisionsPanel.add(bronze);
         this.bronze.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -77,12 +84,14 @@ public class RankedDivisionsPanel {
         this.divisionsPanel.add(this.bronze);
     }
 
+    // EFFECTS: creates a space between "Bronze" and "Silver"
     public void divisionSpacing3() {
         this.divisionSpace3 = new JLabel(" ");
         this.divisionSpace3.setFont(new Font("HK Grotesk", Font.BOLD, 30));
         this.divisionsPanel.add(this.divisionSpace3);
     }
 
+    // EFFECTS: creates a button for "Silver"
     public void silverButton() {
         this.divisionsPanel.add(silver);
         this.silver.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -91,12 +100,14 @@ public class RankedDivisionsPanel {
         this.divisionsPanel.add(this.silver);
     }
 
+    // EFFECTS: creates a space between "Silver" and "Gold"
     public void divisionSpacing4() {
         this.divisionSpace4 = new JLabel(" ");
         this.divisionSpace4.setFont(new Font("HK Grotesk", Font.BOLD, 30));
         this.divisionsPanel.add(this.divisionSpace4);
     }
 
+    // EFFECTS: creates a button for "Gold"
     public void goldButton() {
         this.divisionsPanel.add(gold);
         this.gold.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -105,12 +116,14 @@ public class RankedDivisionsPanel {
         this.divisionsPanel.add(this.gold);
     }
 
+    // EFFECTS: creates a space between "Gold" and "Platinum"
     public void divisionSpacing5() {
         this.divisionSpace5 = new JLabel(" ");
         this.divisionSpace5.setFont(new Font("HK Grotesk", Font.BOLD, 30));
         this.divisionsPanel.add(this.divisionSpace5);
     }
 
+    // EFFECTS: creates a button for "Platinum"
     public void platinumButton() {
         this.divisionsPanel.add(platinum);
         this.platinum.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -119,12 +132,14 @@ public class RankedDivisionsPanel {
         this.divisionsPanel.add(this.platinum);
     }
 
+    // EFFECTS: creates a space between "Platinum" and "Diamond"
     public void divisionSpacing6() {
         this.divisionSpace6 = new JLabel(" ");
         this.divisionSpace6.setFont(new Font("HK Grotesk", Font.BOLD, 30));
         this.divisionsPanel.add(this.divisionSpace6);
     }
 
+    // EFFECTS: creates a button for "Diamond"
     public void diamondButton() {
         this.divisionsPanel.add(diamond);
         this.diamond.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -133,12 +148,14 @@ public class RankedDivisionsPanel {
         this.divisionsPanel.add(this.diamond);
     }
 
+    // EFFECTS: creates a space between "Diamond" and "Masters/Predator"
     public void divisionSpacing7() {
         this.divisionSpace7 = new JLabel(" ");
         this.divisionSpace7.setFont(new Font("HK Grotesk", Font.BOLD, 30));
         this.divisionsPanel.add(this.divisionSpace7);
     }
 
+    // EFFECTS: creates a button for "Masters/Predator"
     public void mastersPredatorButton() {
         this.divisionsPanel.add(mastersPredator);
         this.mastersPredator.setAlignmentX(Component.CENTER_ALIGNMENT);

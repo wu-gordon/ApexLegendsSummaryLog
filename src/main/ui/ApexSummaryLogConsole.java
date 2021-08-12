@@ -11,7 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-// main console Apex summary log application
+// Console Application for Apex Ranked Points (RP) Match History Log
 public class ApexSummaryLogConsole {
     private MatchLog matches;
     private RankedPointsCalculator rpCalc;
@@ -20,6 +20,7 @@ public class ApexSummaryLogConsole {
     private JsonReader jsonReader;
     private static final String JSON_STORE = "./data/matchLog.json";
 
+    // EFFECTS: launches console, creates appropriate instances
     public ApexSummaryLogConsole() {
         matches = new MatchLog();
         rpCalc = new RankedPointsCalculator();

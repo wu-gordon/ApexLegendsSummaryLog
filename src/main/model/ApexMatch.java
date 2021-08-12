@@ -3,14 +3,14 @@ package model;
 import org.json.JSONObject;
 import persistence.Writable;
 
-// game data values of an apex match
+// An Apex Match that stores rank division, placement, kill participation and ranked points values
 public class ApexMatch implements Writable {
     private String rank;
     private int placement;
     private int kp;
     private int rp;
 
-    // constructor without parameters
+    // EFFECTS: Constructor 1 - setting game data value variables (no parameters)
     public ApexMatch() {
         this.rank = "";
         this.placement = 0;
@@ -18,7 +18,7 @@ public class ApexMatch implements Writable {
         this.rp = 0;
     }
 
-    // constructor with parameters
+    // EFFECTS: Constructor 2 - setting game data value parameters
     public ApexMatch(String rank, int placement, int kp, int rp) {
         this.rank = rank;
         this.placement = placement;

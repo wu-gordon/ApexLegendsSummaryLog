@@ -15,6 +15,7 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+// Graphical User Interface (GUI) for Apex Ranked Points (RP) Match History Log
 public class ApexSummaryLogGUI extends JFrame {
     private JLabel rankDivisionLabel;
     private JLabel kpLabel;
@@ -37,6 +38,7 @@ public class ApexSummaryLogGUI extends JFrame {
     private PlayMusic playMusic;
     private ApexMatch apexMatch;
 
+    // EFFECTS: launches gui, creates appropriate instances
     public ApexSummaryLogGUI() {
         setTitle("Apex Legends Ranked Points (RP) Match History Log");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,6 +67,7 @@ public class ApexSummaryLogGUI extends JFrame {
         setVisible(true);
     }
 
+    // EFFECTS: creates new instances of all 5 panels *not enough space in constructor*
     public void newPanels() {
         this.homePagePanel = new HomePagePanel();
         this.rankedDivisionsPanel = new RankedDivisionsPanel();
@@ -73,6 +76,7 @@ public class ApexSummaryLogGUI extends JFrame {
         this.printMatchHistoryPanel = new PrintMatchHistoryPanel();
     }
 
+    // EFFECTS: creates new instances of all ranked division labels *not enough space in constructor*
     public void newLabels() {
         this.rankDivisionLabel = new JLabel();
         this.rankDivisionLabel.setFont(new Font("HK Grotesk", Font.PLAIN, 35));
@@ -91,12 +95,14 @@ public class ApexSummaryLogGUI extends JFrame {
         this.rpLabel.setBounds(512, 430, 300, 60);
     }
 
+    // EFFECTS: adds home page panel content to main frame
     public void openHomePage() {
         add(this.homePagePanel.getMenuPanel());
         homePageEnterButtonAction();
         homePageQuitButtonAction();
     }
 
+    // EFFECTS: sends player to the next panel depending on the selected drop down menu option on home page panel
     public void homePageEnterButtonAction() {
         this.homePagePanel.getEnterButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -120,20 +126,16 @@ public class ApexSummaryLogGUI extends JFrame {
         });
     }
 
-    public void openRankedDivisionsPage() {
-        add(this.rankedDivisionsPanel.getDivisionsPanel());
+    // EFFECTS: closes the application if quit button is pressed
+    public void homePageQuitButtonAction() {
+        homePagePanel.getQuitButton().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
     }
 
-    public void divisionButtonActions() {
-        divisionsPageBronzeButtonAction();
-        divisionsPageSilverButtonAction();
-        divisionsPageGoldButtonAction();
-        divisionsPagePlatinumButtonAction();
-        divisionsPageDiamondButtonAction();
-        divisionsPageMastersPredatorButtonAction();
-        divisionsPageEnterButton();
-    }
-
+    // EFFECTS: saves apex matches to file on button press
     public void menuSelect1() {
         try {
             jsonWriter.open();
@@ -147,10 +149,29 @@ public class ApexSummaryLogGUI extends JFrame {
         }
     }
 
+    // EFFECTS: sends player to print match history panel, prints apex match history log on button press
     public void menuSelect2() {
         matchLog.printSummaryLog();
     }
 
+    // EFFECTS: adds match history panel to main frame
+    public void openMatchHistoryPage() {
+        add(this.printMatchHistoryPanel.getMatchHistoryPanel());
+    }
+
+    // EFFECTS: prints all Apex match data
+    public void printMatches() {
+        System.out.println(matchLog.getMatches().size());
+        for (ApexMatch match : matchLog.getMatches()) {
+            JLabel printLabel = new JLabel();
+            printLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+            printLabel.setText(match.toString());
+            printLabel.setFont(new Font("HK Grotesk", Font.PLAIN, 23));
+            printMatchHistoryPanel.getMatchHistoryPanel().add(printLabel);
+        }
+    }
+
+    // EFFECTS: loads apex match history data
     public void menuSelect3() {
         try {
             matchLog = jsonReader.read();
@@ -160,14 +181,23 @@ public class ApexSummaryLogGUI extends JFrame {
         }
     }
 
-    public void homePageQuitButtonAction() {
-        homePagePanel.getQuitButton().addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
+    // EFFECTS: adds ranked divisions panel content to main frame
+    public void openRankedDivisionsPage() {
+        add(this.rankedDivisionsPanel.getDivisionsPanel());
     }
 
+    // EFFECTS: sends player to game data input panel upon appropriate ranked division button press
+    public void divisionButtonActions() {
+        divisionsPageBronzeButtonAction();
+        divisionsPageSilverButtonAction();
+        divisionsPageGoldButtonAction();
+        divisionsPagePlatinumButtonAction();
+        divisionsPageDiamondButtonAction();
+        divisionsPageMastersPredatorButtonAction();
+        divisionsPageEnterButton();
+    }
+
+    // EFFECTS: sends player to game data input panel with set rank "Bronze"
     public void divisionsPageBronzeButtonAction() {
         rankedDivisionsPanel.getBronzeButton().addActionListener(new ActionListener() {
             @Override
@@ -182,6 +212,7 @@ public class ApexSummaryLogGUI extends JFrame {
         });
     }
 
+    // EFFECTS: sends player to game data input panel with set rank "Silver"
     public void divisionsPageSilverButtonAction() {
         rankedDivisionsPanel.getSilverButton().addActionListener(new ActionListener() {
             @Override
@@ -196,6 +227,7 @@ public class ApexSummaryLogGUI extends JFrame {
         });
     }
 
+    // EFFECTS: sends player to game data input panel with set rank "Gold"
     public void divisionsPageGoldButtonAction() {
         rankedDivisionsPanel.getGoldButton().addActionListener(new ActionListener() {
             @Override
@@ -210,6 +242,7 @@ public class ApexSummaryLogGUI extends JFrame {
         });
     }
 
+    // EFFECTS: sends player to game data input panel with set rank "Platinum"
     public void divisionsPagePlatinumButtonAction() {
         rankedDivisionsPanel.getPlatinumButton().addActionListener(new ActionListener() {
             @Override
@@ -224,6 +257,7 @@ public class ApexSummaryLogGUI extends JFrame {
         });
     }
 
+    // EFFECTS: sends player to game data input panel with set rank "Diamond"
     public void divisionsPageDiamondButtonAction() {
         rankedDivisionsPanel.getDiamondButton().addActionListener(new ActionListener() {
             @Override
@@ -238,6 +272,7 @@ public class ApexSummaryLogGUI extends JFrame {
         });
     }
 
+    // EFFECTS: sends player to game data input panel with set rank "Masters/Predator"
     public void divisionsPageMastersPredatorButtonAction() {
         rankedDivisionsPanel.getMastersPredatorButton().addActionListener(new ActionListener() {
             @Override
@@ -252,11 +287,13 @@ public class ApexSummaryLogGUI extends JFrame {
         });
     }
 
+    // EFFECTS: adds game data input panel to main frame, creates instance for Apex match
     public void openGameDataInputPage() {
         add(this.gameDataInputPanel.getGameDataInputPanel());
         this.apexMatch = new ApexMatch();
     }
 
+    // EFFECTS: sends player to game data input page on button press
     public void divisionsPageEnterButton() {
         gameDataInputPanel.getGameDataEnterButton().addActionListener(new ActionListener() {
             @Override
@@ -272,27 +309,20 @@ public class ApexSummaryLogGUI extends JFrame {
         });
     }
 
-    public void openMatchHistoryPage() {
-        add(this.printMatchHistoryPanel.getMatchHistoryPanel());
+    // EFFECTS: adds ranked points calculation page content to main frame
+    public void openRankedPointsCalculationPage() {
+        add(this.rankedPointsCalculationPanel.getRankedPointsPanel());
+        rankedPointsCalculationAddButton();
     }
 
-    public void printMatches() {
-        System.out.println(matchLog.getMatches().size());
-        for (ApexMatch match : matchLog.getMatches()) {
-            JLabel printLabel = new JLabel();
-            printLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-            printLabel.setText(match.toString());
-            printLabel.setFont(new Font("HK Grotesk", Font.PLAIN, 23));
-            printMatchHistoryPanel.getMatchHistoryPanel().add(printLabel);
-        }
-    }
-
+    // EFFECTS: stores ranked division input for ranked points calculation panel
     public void setRankDivisionForNextPanel() {
         apexMatch.storeRankedDivision(apexMatch.getRank());
         rankDivisionLabel.setText(apexMatch.getRank());
         rankedPointsCalculationPanel.getRankedPointsPanel().add(rankDivisionLabel);
     }
 
+    // EFFECTS: stores kill participation input for ranked points calculation panel
     public void setKPValueForNextPanel() {
         int kpValue = Integer.parseInt(gameDataInputPanel.getKPTextField().getText());
         apexMatch.storeKillParticipation(kpValue);
@@ -301,6 +331,7 @@ public class ApexSummaryLogGUI extends JFrame {
         rankedPointsCalculationPanel.getRankedPointsPanel().add(kpLabel);
     }
 
+    // EFFECTS: stores placement input for ranked points calculation panel
     public void setPlacementValueForNextPanel() {
         int placementValue = Integer.parseInt(gameDataInputPanel.getPlacementTextField().getText());
         apexMatch.storePlacement(placementValue);
@@ -309,6 +340,7 @@ public class ApexSummaryLogGUI extends JFrame {
         rankedPointsCalculationPanel.getRankedPointsPanel().add(placementLabel);
     }
 
+    // EFFECTS: stores ranked points calculation value for ranked points calculation panel
     public void setRankedPointsValueForNextPanel() {
         apexMatch.setRp(rpCalc.calculateRankEntryCost(apexMatch.getRank(),
                 apexMatch.getPlacement(), apexMatch.getKp()));
@@ -317,11 +349,7 @@ public class ApexSummaryLogGUI extends JFrame {
         rankedPointsCalculationPanel.getRankedPointsPanel().add(rpLabel);
     }
 
-    public void openRankedPointsCalculationPage() {
-        add(this.rankedPointsCalculationPanel.getRankedPointsPanel());
-        rankedPointsCalculationAddButton();
-    }
-
+    // EFFECTS: sends player back to home page panel to Add, Save, Print, Load on button press
     public void rankedPointsCalculationAddButton() {
         rankedPointsCalculationPanel.getRankedPointsAddButton().addActionListener(new ActionListener() {
             @Override
@@ -332,6 +360,4 @@ public class ApexSummaryLogGUI extends JFrame {
             }
         });
     }
-
-
 }

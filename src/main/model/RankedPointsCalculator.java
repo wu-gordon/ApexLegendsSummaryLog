@@ -1,12 +1,9 @@
 package model;
 
-import model.ApexMatch;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 
-// a ranked points (RP) calculator created once per ranked session that calculates your RP amount based on
-// rank division, placement, and kill participation (KP)
+// A ranked points (RP) calculator that calculates your RP amount based on rank division (subtract entry cost),
+// placement, and kill participation (KP)
 public class RankedPointsCalculator {
     private final HashMap<String, Integer> rankEntryCost;
     private final HashMap<Integer, Integer[]> placementKpMultiplier;
@@ -16,6 +13,7 @@ public class RankedPointsCalculator {
     private Integer[] tenAndTwelve;
     private Integer[] twentyAndTwelve;
 
+    // EFFECTS: launches both hashmaps, creates appropriate instances
     public RankedPointsCalculator() {
         rankEntryCost = new HashMap<>();
         placementKpMultiplier = new HashMap<>();

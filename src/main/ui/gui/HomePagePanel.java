@@ -3,6 +3,7 @@ package ui.gui;
 import javax.swing.*;
 import java.awt.*;
 
+// Panel 1: The main home page panel with drop down menu options: Add, Save, Print, Load
 public class HomePagePanel {
     private JPanel menuPanel;
     private JLabel menuOptions;
@@ -22,6 +23,7 @@ public class HomePagePanel {
     private JLabel apexImageLabel;
     private JComboBox<String> selections;
 
+    // EFFECTS: creates appropriate instances
     public HomePagePanel() {
         // home page panel
         this.menuPanel = new JPanel();
@@ -43,7 +45,7 @@ public class HomePagePanel {
         launchHomePanel();
     }
 
-    // launch gui
+    // EFFECTS: launches the home page panel
     public void launchHomePanel() {
         menuTitle1();
         homeSpacing2();
@@ -60,39 +62,39 @@ public class HomePagePanel {
         homePageQuitButton();
     }
 
-    // space: top frame -> title 1
+    // EFFECTS: creates a space between top frame -> title 1
     public void homeSpacing1() {
         this.spacing1.setFont(new Font("HK Grotesk", Font.BOLD, 30));
         this.menuPanel.add(this.spacing1);
     }
 
-    // title of application part 1
+    // EFFECTS: creates the title of application part 1
     public void menuTitle1() {
         this.menuHeaderTitle1.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.menuHeaderTitle1.setFont(new Font("HK Grotesk", Font.BOLD, 40));
         this.menuPanel.add(this.menuHeaderTitle1);
     }
 
-    // space: title 1 -> title 2
+    // EFFECTS: creates a space between title 1 -> title 2
     public void homeSpacing2() {
         this.spacing2.setFont(new Font("HK Grotesk", Font.BOLD, 10));
         this.menuPanel.add(this.spacing2);
     }
 
-    // title of application part 2
+    // EFFECTS: creates the title of application part 2
     public void menuTitle2() {
         this.menuHeaderTitle2.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.menuHeaderTitle2.setFont(new Font("HK Grotesk", Font.BOLD, 32));
         this.menuPanel.add(this.menuHeaderTitle2);
     }
 
-    // space: title 2 -> logo
+    // EFFECTS: creates a space between title 2 -> logo
     public void homeSpacing3() {
         this.spacing3.setFont(new Font("HK Grotesk", Font.BOLD, 35));
         this.menuPanel.add(this.spacing3);
     }
 
-    // apex logo
+    // EFFECTS: creates a label for apex logo image
     public void addApexLogo() {
         this.apexIcon = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource(
                 "pathfinder-apex-logo.png")));
@@ -101,26 +103,26 @@ public class HomePagePanel {
         this.menuPanel.add(apexImageLabel);
     }
 
-    // space: logo -> options text
+    // EFFECTS: creates a space between logo -> options text
     public void homeSpacing4() {
         this.spacing4.setFont(new Font("HK Grotesk", Font.BOLD, 35));
         this.menuPanel.add(this.spacing4);
     }
 
-    // drop down menu options
+    // EFFECTS: creates drop down menu options Add, Save, Print, Load
     public void dropDownMenuOptions() {
         this.menuOptions.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.menuOptions.setFont(new Font("HK Grotesk", Font.BOLD, 22));
         this.menuPanel.add(this.menuOptions);
     }
 
-    // space: options text -> drop box
+    // EFFECTS: creates a space between options text -> drop box
     public void homeSpacing5() {
         this.spacing5.setFont(new Font("HK Grotesk", Font.BOLD, 25));
         this.menuPanel.add(this.spacing5);
     }
 
-    // drop down box
+    // EFFECTS: creates the drop down menu box with included options
     public void dropDownBox() {
         String[] choices = {"Add - Ranked game data", "Save - Apex matches to file", "Print - Match history data",
                 "Load - Match history data"};
@@ -132,26 +134,26 @@ public class HomePagePanel {
         this.menuPanel.add(selections);
     }
 
-    // space: drop box -> enter
+    // EFFECTS: creates a space between drop box -> enter
     public void homeSpacing6() {
         this.spacing6.setFont(new Font("HK Grotesk", Font.BOLD, 120));
         this.menuPanel.add(this.spacing6);
     }
 
-    // enter button
+    // EFFECTS: creates an enter button
     public void homePageEnterButton() {
         this.enterButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.enterButton.setFont(new Font("HK Grotesk", Font.BOLD, 25));
         this.menuPanel.add(this.enterButton);
     }
 
-    // space between enter and quit button
+    // EFFECTS: creates a space between enter and quit button
     public void homeSpacing7() {
         this.spacing7.setFont(new Font("HK Grotesk", Font.BOLD, 20));
         this.menuPanel.add(this.spacing7);
     }
 
-    // quit button
+    // EFFECTS: creates the quit button
     public void homePageQuitButton() {
         this.quitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.quitButton.setFont(new Font("HK Grotesk", Font.BOLD, 25));

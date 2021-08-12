@@ -3,6 +3,9 @@ package ui.gui;
 import javax.swing.*;
 import java.awt.*;
 
+// Panel 4: A panel that confirms rank division, kill participation, and placement values, while displaying the total
+// calculated ranked points (RP) for the game values put in by the player; Add button brings you back to the home page
+// where you can continue adding ranked game data or Save, Load, Print, Quit
 public class GameDataInputPanel {
     private JPanel gameDataInputPanel;
     private JLabel division;
@@ -12,6 +15,7 @@ public class GameDataInputPanel {
     private JTextField kpTextField;
     private JTextField placementTextField;
 
+    // EFFECTS: creates appropriate instances
     public GameDataInputPanel() {
         this.gameDataInputPanel = new JPanel();
         this.gameDataInputPanel.setLayout(null);
@@ -26,6 +30,7 @@ public class GameDataInputPanel {
         launchGameDataInputPanel();
     }
 
+    // EFFECTS: launches the game data input panel
     public void launchGameDataInputPanel() {
         divisionInput();
         kpInput();
@@ -33,6 +38,7 @@ public class GameDataInputPanel {
         gameDataEnterButton();
     }
 
+    // EFFECTS: sets the ranked division as a label from button press
     public void divisionInput() {
         this.division.setAlignmentX(Component.LEFT_ALIGNMENT);
         this.division.setFont(new Font("HK Grotesk", Font.BOLD, 35));
@@ -40,6 +46,7 @@ public class GameDataInputPanel {
         this.gameDataInputPanel.add(this.division);
     }
 
+    // EFFECTS: introduces a text field for kill participation (KP)
     public void kpInput() {
         this.killsAssists.setAlignmentX(Component.LEFT_ALIGNMENT);
         this.killsAssists.setFont(new Font("HK Grotesk", Font.BOLD, 35));
@@ -49,6 +56,7 @@ public class GameDataInputPanel {
         this.gameDataInputPanel.add(this.kpTextField);
     }
 
+    // EFFECTS: introduces a text field for placement
     public void placementInput() {
         this.placement.setAlignmentX(Component.LEFT_ALIGNMENT);
         this.placement.setFont(new Font("HK Grotesk", Font.BOLD, 35));
@@ -58,6 +66,7 @@ public class GameDataInputPanel {
         this.gameDataInputPanel.add(this.placementTextField);
     }
 
+    // EFFECTS: creates an enter button that leads to the ranked points calculation panel
     public void gameDataEnterButton() {
         this.gameDataEnterButton.setFont(new Font("HK Grotesk", Font.BOLD, 25));
         this.gameDataEnterButton.setBounds(445, 700, 100, 40);

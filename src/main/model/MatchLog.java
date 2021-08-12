@@ -1,15 +1,16 @@
 package model;
 
-// a match log where all apex match data will be stored
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
 
 import java.util.ArrayList;
 
+// An Apex match history log of where all Apex matches and its corresponding game data will be stored
 public class MatchLog implements Writable {
     private final ArrayList<ApexMatch> matches;
 
+    // EFFECTS: creates an array list instance
     public MatchLog() {
         matches = new ArrayList<>();
     }
