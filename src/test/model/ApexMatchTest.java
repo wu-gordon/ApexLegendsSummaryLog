@@ -39,22 +39,14 @@ public class ApexMatchTest {
     // EFFECTS: checks placement correctness from player response within the stated placement range
     @Test
     void testStorePlacementWithinRange() {
-        int placement1 = 1;
-        int placement2 = 5;
-        int placement3 = 20;
-
         try {
-            testMatch1.storePlacement(1);
-            testMatch1.storePlacement(5);
-            testMatch1.storePlacement(20);
+            assertTrue(testMatch1.storePlacement(1));
+            assertTrue(testMatch1.storePlacement(5));
+            assertTrue(testMatch1.storePlacement(20));
         } catch (PlacementNotWithinRange e) {
             fail("Placement value is not within range. Try again.");
             // should not catch exception
         }
-
-        assertEquals(1, placement1);
-        assertEquals(5, placement2);
-        assertEquals(20, placement3);
     }
 
     // EFFECTS: checks placement correctness from player response outside of the stated placement range
