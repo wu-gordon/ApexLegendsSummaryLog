@@ -339,6 +339,7 @@ public class ApexSummaryLogGUI extends JFrame {
             apexMatch.storePlacement(placementValue);
         } catch (PlacementNotWithinRange placementNotWithinRange) {
             System.out.println("Placement value is not within range. Try again");
+            setPlacementValueForNextPanel();
         }
         gameDataInputPanel.getPlacementTextField().setText("");
         placementLabel.setText(String.valueOf(apexMatch.getPlacement()));

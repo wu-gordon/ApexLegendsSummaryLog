@@ -67,9 +67,8 @@ public class ApexMatchTest {
         try {
             testMatch1.storePlacement(0);
             testMatch1.storePlacement(-1);
-            testMatch1.storePlacement(20);
+            testMatch1.storePlacement(21);
         } catch (PlacementNotWithinRange e) {
-            fail("Placement value is not within range. Try again.");
             // should fail
         }
 
