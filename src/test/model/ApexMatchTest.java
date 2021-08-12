@@ -61,18 +61,17 @@ public class ApexMatchTest {
     @Test
     void testStorePlacementNotWithinRange() {
         int placement1 = 1;
-        int placement2 = 5;
         int placement3 = 20;
 
         try {
             testMatch1.storePlacement(0);
             testMatch1.storePlacement(21);
+            fail("Placement value is not within range. Try again.");
         } catch (PlacementNotWithinRange e) {
             // should catch exception
         }
 
         assertEquals(1, placement1);
-        assertEquals(5, placement2);
         assertEquals(20, placement3);
         assertNotEquals(0, placement1);
         assertNotEquals(21, placement3);
