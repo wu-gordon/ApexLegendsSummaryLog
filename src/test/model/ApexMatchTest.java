@@ -49,7 +49,7 @@ public class ApexMatchTest {
             testMatch1.storePlacement(20);
         } catch (PlacementNotWithinRange e) {
             fail("Placement value is not within range. Try again.");
-            // should not fail
+            // should not catch exception
         }
 
         assertEquals(1, placement1);
@@ -66,15 +66,16 @@ public class ApexMatchTest {
 
         try {
             testMatch1.storePlacement(0);
-            testMatch1.storePlacement(-1);
             testMatch1.storePlacement(21);
         } catch (PlacementNotWithinRange e) {
-            // should fail
+            // should catch exception
         }
 
         assertEquals(1, placement1);
         assertEquals(5, placement2);
         assertEquals(20, placement3);
+        assertNotEquals(0, placement1);
+        assertNotEquals(21, placement3);
     }
 
     // EFFECTS: checks kill participation (KP) correctness from player response including all types of values over and under

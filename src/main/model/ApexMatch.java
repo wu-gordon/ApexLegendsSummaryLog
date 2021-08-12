@@ -47,7 +47,7 @@ public class ApexMatch implements Writable {
     // EFFECTS: if the submitted placement value matches the appropriate placement range (symbolizing 20 teams of 3)
     //          the place will be stored as placement and return true; otherwise false
     public boolean storePlacement(int place) throws PlacementNotWithinRange {
-        if (!(place > 0) || !(place < 21)) {
+        if (!(place >= 1) || !(place <= 20)) {
             throw new PlacementNotWithinRange();
         } else {
             placement = place;
