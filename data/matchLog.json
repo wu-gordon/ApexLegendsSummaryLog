@@ -1,26 +1,26 @@
 {"Apex matches": [
     {
-        "kp": 5,
+        "kp": 6,
+        "rank": "gold",
+        "placement": 1,
+        "rp": 226
+    },
+    {
+        "kp": 6,
+        "rank": "platinum",
+        "placement": 1,
+        "rp": 214
+    },
+    {
+        "kp": 6,
         "rank": "diamond",
         "placement": 1,
-        "rp": 177
+        "rp": 202
     },
     {
-        "kp": 3,
-        "rank": "platinum",
+        "kp": 6,
+        "rank": "masters/predator",
         "placement": 1,
-        "rp": 139
-    },
-    {
-        "kp": 3,
-        "rank": "platinum",
-        "placement": 1,
-        "rp": 139
-    },
-    {
-        "kp": 3,
-        "rank": "platinum",
-        "placement": 1,
-        "rp": 139
+        "rp": 190
     }
 ]}

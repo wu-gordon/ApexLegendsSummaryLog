@@ -39,8 +39,16 @@ public class ApexSummaryLogGUI extends JFrame {
     private PlayMusic playMusic;
     private ApexMatch apexMatch;
 
+    private boolean rankedDivisionsListenersAdded;
+    private boolean homePageListenersAdded;
+    private boolean rankedPointsListenersAdded;
+
     // EFFECTS: launches gui, creates appropriate instances
     public ApexSummaryLogGUI() {
+        this.rankedDivisionsListenersAdded = false;
+        this.homePageListenersAdded = false;
+        this.rankedPointsListenersAdded = false;
+
         setTitle("Apex Legends Ranked Points (RP) Match History Log");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1000, 1000);
@@ -99,8 +107,11 @@ public class ApexSummaryLogGUI extends JFrame {
     // EFFECTS: adds home page panel content to main frame
     public void openHomePage() {
         add(this.homePagePanel.getMenuPanel());
-        homePageEnterButtonAction();
-        homePageQuitButtonAction();
+        if (!homePageListenersAdded) {
+            homePageEnterButtonAction();
+            homePageQuitButtonAction();
+        }
+        this.homePageListenersAdded = true;
     }
 
     // EFFECTS: sends player to the next panel depending on the selected drop down menu option on home page panel
@@ -111,7 +122,9 @@ public class ApexSummaryLogGUI extends JFrame {
                     homePagePanel.getMenuPanel().setVisible(false);
                     rankedDivisionsPanel.getDivisionsPanel().setVisible(true);
                     openRankedDivisionsPage();
-                    divisionButtonActions();
+                    if (!rankedDivisionsListenersAdded) {
+                        divisionButtonActions();
+                    }
                 } else if (homePagePanel.getSelections().getSelectedIndex() == 1) {
                     menuSelect1();
                 } else if (homePagePanel.getSelections().getSelectedIndex() == 2) {
@@ -196,6 +209,7 @@ public class ApexSummaryLogGUI extends JFrame {
         divisionsPageDiamondButtonAction();
         divisionsPageMastersPredatorButtonAction();
         divisionsPageEnterButton();
+        this.rankedDivisionsListenersAdded = true;
     }
 
     // EFFECTS: sends player to game data input panel with set rank "Bronze"
@@ -313,7 +327,10 @@ public class ApexSummaryLogGUI extends JFrame {
     // EFFECTS: adds ranked points calculation page content to main frame
     public void openRankedPointsCalculationPage() {
         add(this.rankedPointsCalculationPanel.getRankedPointsPanel());
-        rankedPointsCalculationAddButton();
+        if (!rankedPointsListenersAdded) {
+            rankedPointsCalculationAddButton();
+        }
+        this.rankedPointsListenersAdded = true;
     }
 
     // EFFECTS: stores ranked division input for ranked points calculation panel
